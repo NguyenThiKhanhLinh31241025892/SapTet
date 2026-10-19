@@ -1,0 +1,16 @@
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Dependencies (Node.js)
+node_modules/
+
+# Build files
+dist/
+build/
+
+# System files
+.DS_Store
+Thumbs.db
