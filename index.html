@@ -1,1 +1,768 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SECTION 1: HEADER + BANNER -->
+    <title>Sắp Tết | Trao gửi yêu thương</title>
+    <meta name="description" content="Khám phá hộp quà Tết và tự thiết kế món quà ý nghĩa cùng Sắp Tết.">
+
+
+<!-- Tải font Be Vietnam Pro từ Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body class="page-index">
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-container">
+
+            <!-- Logo -->
+            <a href="index.html" class="logo" aria-label="Sắp Tết - Trang chủ">
+                <img src="images/logo-sap-tet.png" alt="Sắp Tết">
+            </a>
+
+            <!-- Navigation -->
+            <nav class="main-nav" aria-label="Điều hướng chính">
+                <a href="index.html" class="nav-link active" aria-current="page">Trang chủ</a>
+                <a href="products.html" class="nav-link">Hộp quà Tết</a>
+                <a href="customize.html" class="nav-link">Tự thiết kế hộp quà</a>
+                <a href="about.html" class="nav-link">Về Sắp Tết</a>
+                
+                <span class="login-link login-placeholder" title="Đăng nhập chưa được triển khai trong Buổi 2">
+                    <svg
+                        class="login-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path>
+                    </svg>
+
+                    <span class="login-text">Tài khoản (demo)</span>
+                </span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <main>
+    <h1 class="sr-only">Sắp Tết – Hộp quà Tết tự thiết kế và combo</h1>
+        <section class="hero-banner" aria-label="Giới thiệu Sắp Tết">
+            <!-- Ảnh banner đã có headline và tagline -->
+            <img
+                class="hero-image"
+                src="images/hero-banner.webp"
+                alt="Sắp Tết - Tết là để gửi trao, một món quà nhỏ gửi trọn yêu thương"
+            >
+
+            <!-- Nút CTA được tạo bằng HTML/CSS -->
+            <a href="products.html" class="hero-cta">
+                Khám phá hộp quà
+                <span aria-hidden="true">→</span>
+            </a>
+        </section>
+    </main>
+
+
+
+
+
+<!-- SECTION 2: PREMIUM GIFT OPTIONS -->
+<section class="gift-options">
+    <div class="section-container">
+
+        <h2 class="section-title">
+            CHỌN PHONG CÁCH HỘP QUÀ BẠN MUỐN
+        </h2>
+
+        <p class="section-description">
+            Một món quà được chọn bằng sự tinh tế,
+            gửi trao bằng cả tấm lòng.
+        </p>
+
+        <div class="gift-options-grid">
+
+            <!-- HỘP QUÀ THIẾT KẾ SẴN -->
+            <article class="gift-card gift-card-ready">
+
+                <img
+                    class="gift-card-image"
+                    src="images/gift-ready.png"
+                    alt="Hộp quà Tết thiết kế sẵn với bao bì đỏ vàng sang trọng"
+                    loading="lazy"
+                >
+
+                <div class="gift-card-content">
+                    <h3>HỘP QUÀ TUYỂN CHỌN</h3>
+
+                    <p>
+                        Combo quà Tết được Sắp Tết
+                        chuẩn bị chỉn chu, sẵn sàng cho những dịp trao tặng của bạn.
+                    </p>
+
+                    <a href="products.html" class="gift-card-link">
+                        Khám phá bộ sưu tập
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- TỰ THIẾT KẾ HỘP QUÀ -->
+            <article class="gift-card gift-card-custom">
+
+                <img
+                    class="gift-card-image"
+                    src="images/gift-custom.png"
+                    alt="Hộp quà Tết mở nắp với các sản phẩm quà tặng được sắp xếp bên trong"
+                    loading="lazy"
+                >
+
+                <div class="gift-card-content">
+                    <h3>HỘP QUÀ CỦA RIÊNG BẠN</h3>
+
+                    <p>
+                        Bạn có thể tự chọn những sản phẩm yêu thích để
+                        tạo nên món quà mang bản sắc riêng của mình.
+                    </p>
+
+                    <a href="customize.html" class="gift-card-link">
+                        Bắt đầu thiết kế
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- SECTION 3: FEATURED PRODUCTS -->
+<section class="featured-products" id="san-pham-noi-bat">
+  <div class="featured-container">
+
+    <div class="featured-heading">
+      <div class="featured-heading-text">
+        <h2 class="featured-title">NHỮNG HỘP QUÀ ĐƯỢC TUYỂN CHỌN</h2>
+        <p class="featured-description">
+          Gói trọn tinh hoa ngày Tết trong từng món quà chỉn chu,
+          thay lời chúc an khang và thịnh vượng.
+        </p>
+      </div>
+
+      <a href="products.html" class="featured-view-all">
+        Xem tất cả sản phẩm <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <div class="product-carousel" aria-label="Các hộp quà Tết nổi bật">
+
+      <!-- PRODUCT 1 -->
+      <article class="product-card">
+        <a href="products.html" class="product-image-link"
+           aria-label="Xem chi tiết Hộp Quà Phúc Lộc">
+          <span class="product-badge">BÁN CHẠY</span>
+          <img
+            class="product-image"
+            src="images/product-1.png"
+            alt="Hộp quà Tết Phúc Lộc màu đỏ rượu vang và vàng champagne"
+            loading="lazy"
+          >
+        </a>
+
+        <div class="product-info">
+          <p class="product-category">HỘP QUÀ CAO CẤP</p>
+          <h3 class="product-name">
+            <a href="products.html">Hộp Quà Phúc Lộc</a>
+          </h3>
+          <p class="product-description">
+            Hòa quyện hương vị truyền thống trong thiết kế sang trọng.
+          </p>
+
+          <div class="product-bottom">
+            <p class="product-price">599.000đ</p>
+        <a href="products.html" class="product-detail-link">
+            <span>Xem chi tiết</span>
+            <span class="product-detail-arrow" aria-hidden="true">→</span>
+        </a>
+        </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 2 -->
+      <article class="product-card">
+        <a href="products.html" class="product-image-link"
+           aria-label="Xem chi tiết Hộp Quà An Khang">
+          <span class="product-badge product-badge-gold">ĐƯỢC YÊU THÍCH</span>
+          <img
+            class="product-image"
+            src="images/product-2.png"
+            alt="Hộp quà Tết An Khang phối đỏ và vàng với các sản phẩm bên trong"
+            loading="lazy"
+          >
+        </a>
+
+        <div class="product-info">
+          <p class="product-category">QUÀ TẶNG GIA ĐÌNH</p>
+          <h3 class="product-name">
+            <a href="products.html">Hộp Quà An Khang</a>
+          </h3>
+          <p class="product-description">
+            Lời chúc sức khỏe và bình an dành tặng những người thân yêu.
+          </p>
+
+          <div class="product-bottom">
+            <p class="product-price">799.000đ</p>
+       <a href="products.html" class="product-detail-link">
+                <span>Xem chi tiết</span>
+                <span class="product-detail-arrow" aria-hidden="true">→</span>
+            </a>
+            </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 3 -->
+      <article class="product-card">
+        <a href="products.html" class="product-image-link"
+           aria-label="Xem chi tiết Hộp Quà Thịnh Vượng">
+          <img
+            class="product-image"
+            src="images/product-3.png"
+            alt="Hộp quà Tết Thịnh Vượng cao cấp màu đỏ với chi tiết vàng ánh kim"
+            loading="lazy"
+          >
+        </a>
+
+        <div class="product-info">
+          <p class="product-category">QUÀ TẶNG ĐỐI TÁC</p>
+          <h3 class="product-name">
+            <a href="products.html">Hộp Quà Thịnh Vượng</a>
+          </h3>
+          <p class="product-description">
+            Thiết kế tinh tế, phù hợp trao gửi lời tri ân và hợp tác.
+          </p>
+
+          <div class="product-bottom">
+            <p class="product-price">999.000đ</p>
+       <a href="products.html" class="product-detail-link">
+            <span>Xem chi tiết</span>
+            <span class="product-detail-arrow" aria-hidden="true">→</span>
+        </a>
+        </div>
+        </div>
+      </article>
+
+      <!-- PRODUCT 4 -->
+      <article class="product-card">
+        <a href="products.html" class="product-image-link"
+           aria-label="Xem chi tiết Hộp Quà Tài Lộc">
+          <span class="product-badge">QUÀ TẶNG ĐẶC BIỆT</span>
+          <img
+            class="product-image"
+            src="images/product-4.png"
+            alt="Hộp quà Tết Tài Lộc màu đỏ và vàng với cách sắp xếp sản phẩm chỉn chu"
+            loading="lazy"
+          >
+        </a>
+
+        <div class="product-info">
+          <p class="product-category">PHIÊN BẢN ĐẶC BIỆT</p>
+          <h3 class="product-name">
+            <a href="products.html">Hộp Quà Tài Lộc</a>
+          </h3>
+          <p class="product-description">
+            Món quà nổi bật gửi gắm lời chúc sung túc cho năm mới.
+          </p>
+
+          <div class="product-bottom">
+            <p class="product-price">1.299.000đ</p>
+            <a href="products.html" class="product-detail-link"
+               aria-label="Xem Hộp Quà Tài Lộc">
+              <span>Xem chi tiết</span>
+              <span class="product-detail-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+<!-- END SECTION 3 -->
+
+
+
+
+<!-- SECTION 4: BRAND STORY -->
+<section class="brand-story" id="cau-chuyen">
+    <div class="brand-story__inner">
+
+        <p class="brand-story__eyebrow">
+            CÂU CHUYỆN THƯƠNG HIỆU
+        </p>
+
+        <h2 class="brand-story__title">
+            TẾT LÀ DỊP ĐỂ<br class="desktop-break">
+            TRAO GỬI NHỮNG YÊU THƯƠNG
+        </h2>
+
+        <div class="brand-story__ornament" aria-hidden="true">
+            <span></span>
+            <span class="brand-story__ornament-star">✦</span>
+            <span></span>
+        </div>
+
+        <div class="brand-story__content">
+            <p>
+                Có những lời chúc chẳng dễ nói thành lời.
+                Có những tình cảm được gửi gắm qua một món quà nhỏ,
+                một chút quan tâm và sự chuẩn bị đầy tâm ý.
+            </p>
+
+            <p>
+                Sắp Tết tin rằng mỗi hộp quà không chỉ mang theo
+                hương vị ngày xuân, mà còn là cách để ta gửi trao
+                lời chúc bình an, lời cảm ơn và mong ước về
+                một năm mới đủ đầy.
+            </p>
+        </div>
+
+        <p class="brand-story__tagline">
+            Trao một món quà để gửi trọn lời thương yêu.
+        </p>
+
+        <div class="brand-story__bottom-line"
+             aria-hidden="true"></div>
+    </div>
+</section>
+
+
+
+
+
+<!-- SECTION 5: VÌ SAO CHỌN SẮP TẾT? -->
+<section class="why-sap-tet" id="why-sap-tet">
+  <div class="why-sap-tet__container">
+
+    <!-- Section heading -->
+    <div class="why-sap-tet__heading">
+      <p class="why-sap-tet__eyebrow">
+        <span class="why-sap-tet__eyebrow-line"></span>
+        ĐIỀU LÀM NÊN SẮP TẾT
+        <span class="why-sap-tet__eyebrow-line"></span>
+      </p>
+
+      <h2 class="why-sap-tet__title">
+        VÌ SAO NÊN CHỌN <span>SẮP TẾT?</span>
+      </h2>
+
+      <p class="why-sap-tet__subtitle">
+        Trao quà chỉn chu, gửi tình cảm trọn vẹn.
+      </p>
+    </div>
+
+    <!-- Value cards -->
+    <div class="value-grid">
+
+      <!-- Card 1 -->
+      <article class="value-card">
+        <div class="value-card__visual">
+          <div class="value-card__image-glass">
+            <img
+              src="images/value-craft.png"
+              alt="Hộp quà Tết được trang trí chỉn chu"
+              class="value-card__image"
+              loading="lazy"
+            >
+          </div>
+          <span class="value-card__number">01</span>
+        </div>
+
+        <div class="value-card__body">
+
+          <h3 class="value-card__title">
+            Quà tặng chỉn chu
+          </h3>
+
+          <p class="value-card__description">
+            Mỗi hộp quà là sự kết hợp hài hòa giữa sản phẩm,
+            màu sắc và cách trình bày, giúp món quà thêm ý nghĩa.
+          </p>
+
+          <div class="value-card__accent"></div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="value-card">
+        <div class="value-card__visual">
+          <div class="value-card__image-glass">
+            <img
+              src="images/value-choice.png"
+              alt="Các sản phẩm quà Tết được sắp xếp hài hòa"
+              class="value-card__image"
+              loading="lazy"
+            >
+          </div>
+          <span class="value-card__number">02</span>
+        </div>
+
+        <div class="value-card__body">
+
+          <h3 class="value-card__title">
+            Lựa chọn linh hoạt
+          </h3>
+
+          <p class="value-card__description">
+            Dễ dàng tìm kiếm hộp quà phù hợp với ngân sách,
+            sở thích và người mà bạn muốn gửi trao yêu thương.
+          </p>
+
+          <div class="value-card__accent"></div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="value-card">
+        <div class="value-card__visual">
+          <div class="value-card__image-glass">
+            <img
+              src="images/value-meaning.png"
+              alt="Khoảnh khắc trao tặng hộp quà Tết đầy tình cảm"
+              class="value-card__image"
+              loading="lazy"
+            >
+          </div>
+          <span class="value-card__number">03</span>
+        </div>
+
+        <div class="value-card__body">
+
+          <h3 class="value-card__title">
+            Gửi trao tâm ý
+          </h3>
+
+          <p class="value-card__description">
+            Không chỉ là món quà ngày Tết, đó còn là lời chúc
+            bình an, lời cảm ơn và sự quan tâm dành cho người nhận.
+          </p>
+
+          <div class="value-card__accent"></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
+
+
+
+
+<!-- SECTION 06: TET SALE GLOW -->
+<section class="tet-sale" id="sale-off">
+  <div class="tet-sale__frame">
+
+    <!-- Decorative light -->
+    <div class="tet-sale__glow tet-sale__glow--one"></div>
+    <div class="tet-sale__glow tet-sale__glow--two"></div>
+    <div class="tet-sale__spark tet-sale__spark--one">✦</div>
+    <div class="tet-sale__spark tet-sale__spark--two">✧</div>
+    <div class="tet-sale__spark tet-sale__spark--three">✦</div>
+
+    <div class="tet-sale__content">
+
+      <!-- Header -->
+      <header class="tet-sale__header">
+        <div class="tet-sale__eyebrow">
+        </div>
+
+        <h2>
+          QUÀ XINH
+          <span>GIÁ HỜI</span>
+        </h2>
+
+        <p class="tet-sale__subtitle">
+          Trao trọn tâm ý — săn ngay ưu đãi đầu xuân
+        </p>
+
+        <div class="tet-sale__ornament">
+          <span></span> ✦ <span></span>
+        </div>
+      </header>
+
+      <!-- Product cards -->
+      <div class="tet-sale__grid">
+
+        <article class="tet-glass-card">
+          <div class="tet-glass-card__visual">
+            <span class="tet-glass-card__badge">
+              <small>GIẢM</small>
+              15%
+            </span>
+            <span class="tet-glass-card__index">01</span>
+
+            <img
+              src="images/hop-qua-phuc-loc.png"
+              alt="Hộp Quà Phúc Lộc"
+              class="tet-glass-card__image"
+              loading="lazy"
+            />
+
+            <div class="tet-glass-card__image-shine"></div>
+            <span class="tet-glass-card__glass-label">
+              TẾT GẮN KẾT
+            </span>
+          </div>
+
+          <div class="tet-glass-card__body">
+            <span class="tet-glass-card__category">GIFT COLLECTION</span>
+            <h3>Hộp Quà Phúc Lộc</h3>
+            <p class="tet-glass-card__desc">
+              Gói ghém may mắn, gửi trao yêu thương.
+            </p>
+
+            <div class="tet-glass-card__price">
+              <span class="tet-glass-card__old">699.000đ</span>
+              <strong>594.000đ</strong>
+            </div>
+
+            <a href="products.html" class="tet-glass-card__button">
+              <span>Khám phá hộp quà</span>
+              <span class="tet-glass-card__arrow">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="tet-glass-card tet-glass-card--featured">
+          <div class="tet-glass-card__visual">
+            <span class="tet-glass-card__badge">
+              <small>GIẢM</small>
+              20%
+            </span>
+            <span class="tet-glass-card__index">02</span>
+
+            <img
+              src="images/hop-qua-an-khang.png"
+              alt="Hộp Quà An Khang"
+              class="tet-glass-card__image"
+              loading="lazy"
+            />
+
+            <div class="tet-glass-card__image-shine"></div>
+            <span class="tet-glass-card__glass-label">
+              TẾT AN KHANG
+            </span>
+          </div>
+
+          <div class="tet-glass-card__body">
+            <span class="tet-glass-card__category">
+              BEST VALUE · GIFT COLLECTION
+            </span>
+            <h3>Hộp Quà An Khang</h3>
+            <p class="tet-glass-card__desc">
+              Chúc một năm bình an, sung túc.
+            </p>
+
+            <div class="tet-glass-card__price">
+              <span class="tet-glass-card__old">999.000đ</span>
+              <strong>799.000đ</strong>
+            </div>
+
+            <a href="products.html" class="tet-glass-card__button">
+              <span>Khám phá hộp quà</span>
+              <span class="tet-glass-card__arrow">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="tet-glass-card">
+          <div class="tet-glass-card__visual">
+            <span class="tet-glass-card__badge">
+              <small>GIẢM</small>
+              10%
+            </span>
+            <span class="tet-glass-card__index">03</span>
+
+            <img
+              src="images/hop-qua-tai-loc.png"
+              alt="Hộp Quà Tài Lộc"
+              class="tet-glass-card__image"
+              loading="lazy"
+            />
+
+            <div class="tet-glass-card__image-shine"></div>
+            <span class="tet-glass-card__glass-label">
+              TẾT THỊNH VƯỢNG
+            </span>
+          </div>
+
+          <div class="tet-glass-card__body">
+            <span class="tet-glass-card__category">GIFT COLLECTION</span>
+            <h3>Hộp Quà Tài Lộc</h3>
+            <p class="tet-glass-card__desc">
+              Trao lộc đầu năm, đón vạn điều may.
+            </p>
+
+            <div class="tet-glass-card__price">
+              <span class="tet-glass-card__old">1.299.000đ</span>
+              <strong>1.169.000đ</strong>
+            </div>
+
+            <a href="products.html" class="tet-glass-card__button">
+              <span>Khám phá hộp quà</span>
+              <span class="tet-glass-card__arrow">↗</span>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Bottom CTA -->
+      <div class="tet-sale__footer">
+        <p>Ưu đãi dành cho những món quà đầy tâm ý.</p>
+        <a href="products.html" class="tet-sale__view-all">
+          XEM TẤT CẢ HỘP QUÀ <span>→</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- CTA: SAP TET -->
+<section class="st-cta" id="cta-customize">
+  <div class="st-cta__frame">
+
+    <div class="st-cta__glow st-cta__glow--left"></div>
+    <div class="st-cta__glow st-cta__glow--right"></div>
+
+    <div class="st-cta__content">
+
+      <h2>
+        MÓN QUÀ Ý NGHĨA
+        <span>BẮT ĐẦU BẰNG LỰA CHỌN CỦA BẠN</span>
+      </h2>
+
+      <p class="st-cta__description">
+        Tự tay chọn từng món quà, gửi gắm lời chúc
+        và tạo nên chiếc hộp quà mang dấu ấn riêng.
+        Để mỗi món quà trao đi đều chứa đựng một tâm ý.
+      </p>
+
+      <div class="st-cta__actions">
+        <a href="products.html" class="st-cta__button st-cta__button--primary">
+          <span>Khám phá hộp quà</span>
+          <span class="st-cta__arrow">↗</span>
+        </a>
+
+        <a href="customize.html" class="st-cta__button st-cta__button--glass">
+          <span>Tự thiết kế hộp quà</span>
+          <span class="st-cta__arrow">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="st-cta__decoration st-cta__decoration--top">✦</div>
+    <div class="st-cta__decoration st-cta__decoration--bottom">✧</div>
+
+  </div>
+</section>
+
+
+
+<!-- SECTION 8: FOOTER -->
+<footer class="site-footer" id="lien-he">
+  <div class="footer-main">
+
+    <!-- LEFT: BRAND -->
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo" aria-label="Sắp Tết - Trang chủ">
+        <img
+          src="images/sap-tet-logo-white.png"
+          alt="Sắp Tết"
+        >
+      </a>
+
+      <p class="footer-tagline">
+        Gói trọn yêu thương,<br>
+        trao gửi ngày xuân.
+      </p>
+
+      <p class="footer-description">
+        Mỗi món quà là một lời chúc,
+        mỗi lần trao tay là một khoảnh khắc
+        yêu thương được gìn giữ.
+      </p>
+    </div>
+
+    <!-- RIGHT: NAVIGATION + CONNECTION -->
+    <div class="footer-right">
+
+      <!-- DISCOVER + SUPPORT -->
+      <div class="footer-navigation">
+
+        <div class="footer-column">
+          <h3>Khám phá</h3>
+          <a href="index.html">Trang chủ</a>
+          <a href="products.html">Bộ sưu tập quà Tết</a>
+          <a href="customize.html">Tự thiết kế hộp quà</a>
+          <a href="about.html#story-title">Câu chuyện Sắp Tết</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Hỗ trợ</h3>
+          <span class="footer-placeholder" title="Nội dung đang hoàn thiện">Hướng dẫn đặt quà</span>
+          <span class="footer-placeholder" title="Nội dung đang hoàn thiện">Câu hỏi thường gặp</span>
+          <a href="#lien-he">Liên hệ</a>
+        </div>
+
+      </div>
+
+      <!-- CONNECT -->
+      <div class="footer-connect">
+        <h3>Kết nối với Sắp Tết</h3>
+
+        <p>
+          Cùng Sắp Tết trao gửi những món quà
+          xuân ý nghĩa.
+        </p>
+
+        <div class="footer-socials">
+          <span class="footer-social-placeholder" title="Đang cập nhật kênh Facebook">Facebook</span>
+          <span class="footer-social-placeholder" title="Đang cập nhật kênh Instagram">Instagram</span>
+          <span class="footer-social-placeholder" title="Đang cập nhật kênh Email">Email</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COPYRIGHT -->
+  <div class="footer-bottom">
+    <p>© 2026 Sắp Tết. All rights reserved.</p>
+  </div>
+</footer>
 

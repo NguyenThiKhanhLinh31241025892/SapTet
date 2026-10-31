@@ -1,1 +1,348 @@
+/* SẮP TẾT · About-specific styles extracted from existing About source. */
+.about-page {
+    --color-yellow: #FFDE59;   /* vàng sáng trong bảng màu, cùng màu hover của nút CTA */
+    --about-gap: 48px;
+    --about-radius: 12px;
+}
 
+/* ---------- Khung chứa & section ---------- */
+.about-container {
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0 48px;
+}
+
+.about-section {
+    padding: 88px 0;
+}
+
+/* Nền luân phiên đỏ / kem theo style guide */
+.about-section--cream {
+    background-color: var(--color-cream);
+    color: var(--color-red-dark);
+}
+
+.about-section--red {
+    background-color: var(--color-red);
+    color: var(--color-cream);
+}
+
+.about-section--dark {
+    background-color: var(--color-red-dark);
+    color: var(--color-cream);
+}
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+    background-color: var(--color-cream);
+    padding: 14px 0;
+    font-size: 13px;
+}
+
+.breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+}
+
+.breadcrumb li + li::before {
+    content: "/";
+    margin-right: 8px;
+    color: var(--color-gold);
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.breadcrumb a:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+}
+
+.breadcrumb [aria-current="page"] {
+    font-weight: 600;
+}
+
+/* ---------- Typography ---------- */
+.about-title {
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    line-height: 1.25;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+}
+
+.about-title--xl {
+    font-size: clamp(28px, 4.2vw, 52px);
+    line-height: 1.2;
+}
+
+.about-title__sub {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.62em;
+    font-weight: 600;
+    color: var(--color-yellow);
+}
+
+.about-lead {
+    margin-top: 18px;
+    font-size: clamp(15px, 1.4vw, 18px);
+    line-height: 1.75;
+    max-width: 62ch;
+}
+
+.about-section p + p {
+    margin-top: 14px;
+}
+
+.about-heading--center {
+    text-align: center;
+}
+
+.about-heading--center .about-lead {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------- Bố cục 2 cột (hero / story / gift) ---------- */
+.about-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--about-gap);
+}
+
+.about-split--reverse .about-media {
+    order: -1;
+}
+
+.about-media img,
+.about-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-media {
+    border-radius: var(--about-radius);
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--color-gold);
+}
+
+.about-media--wide {
+    aspect-ratio: 4 / 3;
+}
+
+/* ---------- Lưới thẻ (manifesto / details) ---------- */
+.about-grid {
+    list-style: none;
+    display: grid;
+    gap: 28px;
+    margin-top: 48px;
+}
+
+.about-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.about-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border: 1px solid var(--color-gold);
+    border-radius: var(--about-radius);
+    overflow: hidden;
+}
+
+.about-card__media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+.about-card__body {
+    padding: 22px 22px 26px;
+}
+
+.about-card__title {
+    font-family: var(--font-heading);
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 6px;
+}
+
+.about-card__body p {
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+/* ---------- Nút ---------- */
+.about-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 14px 26px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+/* Nút đỏ (trên nền kem) – giống hero-cta */
+.btn--primary {
+    background-color: var(--color-red);
+    border-color: var(--color-red);
+    color: #FFFFFF;
+    margin-top: 28px;
+}
+
+/* Nút kem (trên nền đỏ) */
+.btn--light {
+    background-color: var(--color-cream);
+    border-color: var(--color-cream);
+    color: var(--color-red-dark);
+}
+
+/* Nút viền (trên nền đỏ) */
+.btn--outline {
+    background-color: transparent;
+    border-color: var(--color-cream);
+    color: var(--color-cream);
+}
+
+/* Hover: vàng sáng, chữ đỏ – giống hero-cta */
+.btn:hover,
+.btn:focus-visible {
+    background-color: var(--color-yellow);
+    border-color: var(--color-yellow);
+    color: var(--color-red-dark);
+    transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 4px;
+}
+
+/* ---------- Closing ---------- */
+.about-closing .about-lead {
+    max-width: none;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+/* TABLET */
+@media (max-width: 900px) {
+    .about-section {
+        padding: 64px 0;
+    }
+
+    .about-container {
+        padding: 0 24px;
+    }
+
+    .about-page {
+        --about-gap: 32px;
+    }
+
+    .about-split,
+    .about-grid--3 {
+        grid-template-columns: 1fr;
+    }
+
+    /* Ảnh luôn nằm sau chữ trên mobile/tablet */
+    .about-split--reverse .about-media {
+        order: 0;
+    }
+
+    .about-media {
+        max-width: 560px;
+        width: 100%;
+    }
+
+    .about-grid {
+        margin-top: 32px;
+    }
+
+    /* Thẻ chuyển sang dạng ngang: ảnh trái, chữ phải */
+    .about-card {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .about-card__media {
+        flex: 0 0 42%;
+        aspect-ratio: auto;
+        min-height: 160px;
+    }
+
+    .about-card__body {
+        align-self: center;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .about-section {
+        padding: 48px 0;
+    }
+
+    .about-container {
+        padding: 0 16px;
+    }
+
+    .about-media {
+        max-width: none;
+    }
+
+    .about-card {
+        flex-direction: column;
+    }
+
+    .about-card__media {
+        flex: none;
+        aspect-ratio: 4 / 3;
+        min-height: 0;
+    }
+
+    .about-actions,
+    .about-actions .btn {
+        width: 100%;
+    }
+
+    .btn {
+        padding: 12px 18px;
+        font-size: 13px;
+    }
+
+    .btn--primary {
+        width: 100%;
+    }
+}
