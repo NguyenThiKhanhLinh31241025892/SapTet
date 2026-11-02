@@ -1,85 +1,71 @@
-# Sắp Tết – Website tự phối hộp quà Tết theo ngân sách
+# Sắp Tết – Website hộp quà Tết
 
 ## 1. Giới thiệu
 
-**Sắp Tết** là dự án website thương mại điện tử chuyên kinh doanh hộp quà Tết, cho phép khách hàng tự lựa chọn bao bì, sản phẩm bên trong và thiệp chúc Tết theo sở thích và nhu cầu cá nhân.
+**Sắp Tết** là website giao diện được xây dựng cho bài tập nhóm bằng **HTML5 và CSS3**. Website giới thiệu các hộp quà Tết mẫu, cung cấp danh sách **8 sản phẩm đơn lẻ** và cho phép người dùng thử chọn mẫu hộp cùng sản phẩm bên trong ở trang **Customize**. Các thao tác tự phối chỉ được mô phỏng bằng CSS, chưa phải chức năng đặt hàng thực tế.
 
-Dự án hướng đến giải quyết bốn vấn đề chính:
+## 2. Cấu trúc thư mục
 
-- Hộp quà Tết đóng sẵn thiếu linh hoạt.
-- Khách hàng khó kiểm soát chi tiêu theo ngân sách.
-- Quà tặng thiếu dấu ấn cá nhân.
-- Khách hàng khó hình dung thành phẩm trước khi mua.
+```text
+SapTet/
+├── index.html                 # Trang chủ
+├── products.html              # Danh sách 8 sản phẩm đơn lẻ
+├── product-detail.html        # Thông tin chi tiết 8 sản phẩm
+├── about.html                 # Giới thiệu Sắp Tết
+├── customize.html             # Mô phỏng tự phối hộp quà
+├── css/
+│   ├── style.css              # CSS chung
+│   ├── home.css
+│   ├── products.css
+│   ├── detail.css
+│   ├── about.css
+│   └── customize.css
+├── images/                    # Hình ảnh website
+├── docs/                      # Tài liệu dự án
+└── README.md
+```
 
-**Điểm khác biệt:** Website tích hợp tính năng tự phối hộp quà, thanh ngân sách cập nhật theo thời gian thực và chức năng xem trước hộp quà 2D đơn giản.
+## 3. Các trang của website
 
-## 2. Khách hàng mục tiêu
-
-| Nhóm khách hàng | Nhu cầu chính |
+| Trang | Nội dung |
 |---|---|
-| Sinh viên và giới trẻ (18–25 tuổi) | Mua quà Tết đẹp, độc đáo, cá nhân hóa với ngân sách hạn chế. |
-| Người đi làm | Chuẩn bị quà biếu gia đình, thầy cô, cấp trên hoặc đối tác với mức giá phù hợp. |
-| Doanh nghiệp nhỏ và vừa | Đặt quà Tết số lượng lớn theo ngân sách và yêu cầu riêng; đây là định hướng mở rộng sau MVP. |
+| `index.html` | Trang chủ, giới thiệu thương hiệu và các hộp quà Tết mẫu. |
+| `products.html` | Danh sách **8 sản phẩm đơn lẻ** dùng để tự phối hộp quà. |
+| `product-detail.html` | Hình ảnh, giá và thông tin chi tiết của 8 sản phẩm. |
+| `about.html` | Câu chuyện và thông tin giới thiệu Sắp Tết. |
+| `customize.html` | Mô phỏng chọn mẫu hộp, chọn sản phẩm và xem popup chi tiết bằng CSS. |
 
-## 3. Chức năng chính
+## 4. Công nghệ sử dụng
 
-**Các chức năng dự kiến triển khai trong phiên bản đầu tiên:**
+- **HTML5:** cấu trúc trang, nội dung và liên kết điều hướng.
+- **CSS3:** màu sắc, font chữ, Grid, Flexbox, media query, hover/focus.
+- **Tương tác CSS:** sử dụng `:checked`, `:target`, `:has()` và CSS counter để mô phỏng chọn sản phẩm, đổi mẫu hộp, hiển thị popup và tổng giá trị.
 
-- Xem danh mục, chi tiết, tìm kiếm và lọc sản phẩm.
-- Tự lựa chọn bao bì, thành phần và số lượng sản phẩm.
-- Nhập ngân sách, tính tổng tiền và theo dõi số dư theo thời gian thực.
-- Hiển thị cảnh báo khi vượt ngân sách.
-- Cá nhân hóa thiệp chúc Tết.
-- Xem trước hộp quà 2D ở mức minh họa.
-- Quản lý giỏ hàng, đặt hàng và tra cứu trạng thái đơn.
-- Quản trị sản phẩm, giá, tồn kho và đơn hàng.
+Phiên bản hiện tại **không sử dụng JavaScript, CSS framework, backend hoặc cơ sở dữ liệu**.
 
-**Chức năng đang được xem xét:** Hộp quà mẫu, gợi ý sản phẩm theo ngân sách còn lại, đặt hàng không cần tài khoản và thanh toán chuyển khoản QR thủ công.
+## 5. Cách mở website bằng Live Server
 
-**Các chức năng phát triển sau:** Tài khoản khách hàng đầy đủ, mô phỏng 3D, AI gợi ý nâng cao, đặt quà doanh nghiệp số lượng lớn và thanh toán trực tuyến tự động.
+1. Clone hoặc tải repository về máy, mở thư mục **SapTet** trong **Visual Studio Code**.
+2. Cài tiện ích **Live Server** trong Extensions nếu chưa có.
+3. Nhấp chuột phải vào `index.html`, chọn **Open with Live Server**.
+4. Sử dụng menu website để xem các trang còn lại.
 
-## 4. Thành viên
+Không cần chạy `npm install` hoặc thiết lập máy chủ backend.
 
-| Thành viên | Họ và tên | Vai trò |
-|---|---|---|
-| Thành viên 1 | Nguyễn Thị Khánh Linh | Trưởng nhóm / Business Analyst |
-| Thành viên 2 | Võ Tấn Quý | UI/UX / Frontend |
-| Thành viên 3 | Vũ Thùy Dương   | Frontend / Gift Customizer |
-| Thành viên 4 | Bùi Yến Vy  | Backend / API |
-| Thành viên 5 | Nguyễn Phương Vy  | Database / Admin |
-| Thành viên 6 | Trần Thúy Ngân  | QA / Integration |
+## 6. Kiểm tra responsive
 
-*Phân công dự kiến; nhóm cập nhật theo thực tế.*
+1. Mở website trên **Google Chrome**.
+2. Mở **Developer Tools** bằng F12 (Windows) hoặc `Cmd + Option + I` (Mac).
+3. Bật **Toggle device toolbar**.
+4. Lần lượt nhập chiều rộng **1366px**, **768px** và **390px**.
+5. Kiểm tra menu, hình ảnh, lưới sản phẩm, chữ, footer và popup Customize; ghi nhận lỗi nếu có.
 
-## 5. Công nghệ dự kiến
+Các kích thước trên là mốc kiểm thử, không phải kết luận website đã vượt qua kiểm thử.
 
-- **Frontend:** HTML5, CSS3, JavaScript và Bootstrap 5.
-- **Backend:** Node.js và Express.js.
-- **Cơ sở dữ liệu:** MySQL.
-- **Công cụ hỗ trợ:** Git, GitHub, Visual Studio Code, Figma và Postman.
+## 7. Hạn chế hiện tại
 
-Các công nghệ trên là phương án đề xuất, cần được nhóm thống nhất theo năng lực và yêu cầu học phần.
-
-## 6. Kế hoạch thực hiện
-
-Thời gian triển khai dự kiến: **37 ngày**, gồm sáu giai đoạn:
-
-1. Khảo sát và xác định yêu cầu.
-2. Thiết kế giao diện và cấu trúc dữ liệu.
-3. Xây dựng các chức năng frontend.
-4. Phát triển backend và cơ sở dữ liệu.
-5. Tích hợp và kiểm thử.
-6. Triển khai và hoàn thiện.
-
-Một số giai đoạn được thực hiện song song để phù hợp với tiến độ.
-
-## 7. Liên kết
-
-- [Yêu cầu dự án](REQUIREMENTS.md)
-- [Kế hoạch thực hiện](PROJECT_PLAN.md)
-- [Quy tắc hỗ trợ AI](AGENTS.md)
-- [Nhật ký sử dụng AI](AI_USAGE_LOG.md)
-- [Phân tích website tham khảo](docs/competitor-analysis.md)
-- [Quy trình nghiệp vụ](docs/business-workflow.md)
-
-**Ghi chú:** Đây là tài liệu khởi tạo dự án. Các nội dung sẽ được cập nhật khi nhóm thống nhất phạm vi, công nghệ và kết quả triển khai thực tế.
+- Đây là **website giao diện minh họa**, chưa có backend, database hoặc lưu dữ liệu lựa chọn lâu dài.
+- Chưa triển khai **đăng nhập, tìm kiếm và sắp xếp thực tế**.
+- Chưa có **giỏ hàng, tạo đơn hàng hoặc thanh toán thực tế**.
+- Trang Customize chỉ mô phỏng chọn hộp và sản phẩm bằng CSS. Bộ đếm và tổng giá trị hiển thị là minh họa, không phải hệ thống tính tiền hoặc kiểm soát ngân sách hoàn chỉnh.
+- Thông tin sản phẩm và giá phục vụ bài tập, cần xác minh nếu kinh doanh thực tế.
