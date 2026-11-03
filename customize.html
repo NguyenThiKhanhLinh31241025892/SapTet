@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hộp quà Tết | Sắp Tết</title>
+    <!-- Tải font Be Vietnam Pro từ Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/customize.css">
+</head>
+<body class="page-customize">
+
+<header class="site-header">
+        <div class="header-container">
+
+            <!-- Logo -->
+            <a href="index.html" class="logo" aria-label="Sắp Tết - Trang chủ">
+                <img src="images/logo-sap-tet.png" alt="Sắp Tết">
+            </a>
+
+            <!-- Navigation -->
+            <nav class="main-nav" aria-label="Điều hướng chính">
+                <a href="index.html" class="nav-link">Trang chủ</a>
+                <a href="products.html" class="nav-link">Hộp quà Tết</a>
+                <a href="customize.html" class="nav-link active" aria-current="page">Tự thiết kế hộp quà</a>
+                <a href="about.html" class="nav-link">Về Sắp Tết</a>
+                
+                <span class="login-link login-placeholder" title="Đăng nhập chưa được triển khai trong Buổi 2">
+                    <svg
+                        class="login-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path>
+                    </svg>
+
+                    <span class="login-text">Tài khoản (demo)</span>
+                </span>
+            </nav>
+        </div>
+    </header>
+
+<main class="page" id="noi-dung">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Trang chủ</a> <span>/</span> <span aria-current="page">Tự thiết kế hộp quà</span>
+  </nav>
+
+  <h1 class="page-title">Tự thiết kế hộp quà Tết</h1>
+
+  <div class="layout">
+
+    <!-- RIGHT (wireframe): 02 — CHỌN SẢN PHẨM -->
+    <section class="panel products-panel" id="san-pham" aria-labelledby="ttl-sp">
+      <h2 class="panel-title" id="ttl-sp">02 — Chọn sản phẩm</h2>
+
+      <input type="radio" name="filter" id="f-all" class="filter-input" checked>
+      <input type="radio" name="filter" id="f-banh" class="filter-input">
+      <input type="radio" name="filter" id="f-tra" class="filter-input">
+      <input type="radio" name="filter" id="f-hat" class="filter-input">
+      <input type="radio" name="filter" id="f-uong" class="filter-input">
+      <input type="radio" name="filter" id="f-khac" class="filter-input">
+
+      <div class="filter-tabs" role="group" aria-label="Lọc theo danh mục">
+        <label for="f-all" class="tab">Tất cả</label>
+        <label for="f-banh" class="tab">Bánh kẹo</label>
+        <label for="f-tra" class="tab">Trà &amp; cà phê</label>
+        <label for="f-hat" class="tab">Các loại hạt</label>
+        <label for="f-uong" class="tab">Đồ uống</label>
+        <label for="f-khac" class="tab">Khác</label>
+      </div>
+
+      <div class="toolbar" role="group" aria-label="Minh họa thanh tìm kiếm và sắp xếp">
+        <label class="search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input type="search" disabled name="q" placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm sản phẩm">
+        </label>
+        <label class="sort-box">Sắp xếp:
+          <select name="sort" disabled aria-label="Sắp xếp">
+            <option>Mặc định</option>
+            <option>Giá tăng dần</option>
+            <option>Giá giảm dần</option>
+          </select>
+        </label>
+      </div>
+      <p class="demo-feature-note">Tìm kiếm và sắp xếp sẽ được phát triển ở giai đoạn sau.</p>
+
+      <div class="product-grid">
+
+        <article class="product-card cat-tra" style="--i:1">
+          <input type="checkbox" id="pick-01" class="pick-input">
+          <a href="#sp-01" class="card-media" aria-label="Xem chi tiết Bộ ấm chén trà gốm sứ Ru Kiln">
+            <img src="images/bo-am-chen-tra-gom-su-ru-kiln-9-chi-tiet-am-230ml.png" alt="Bộ ấm chén trà gốm sứ Ru Kiln" loading="lazy">
+            <span class="card-tag">Trà & cà phê</span>
+          </a>
+          <div class="card-body">
+            <h3 class="card-title"><a href="#sp-01">Bộ ấm chén trà gốm sứ Ru Kiln</a></h3>
+            <p class="card-price">289.000đ</p>
+          </div>
+          <div class="card-actions">
+            <a href="#sp-01" class="btn btn-outline">Xem chi tiết</a>
+            <label for="pick-01" class="btn btn-pick"><span class="t-off">+ Chọn sản phẩm</span><span class="t-on">✓ Đã chọn</span></label>
+          </div>
+        </article>
+
+        <article class="product-card cat-banh" style="--i:2">
+          <input type="checkbox" id="pick-02" class="pick-input">
+          <a href="#sp-02" class="card-media" aria-label="Xem chi tiết Bánh quy bơ Danisa hộp thiếc 454g">
+            <img src="images/banh-quy-bo-danisa-hop-thiec-454g.png" alt="Bánh quy bơ Danisa hộp thiếc 454g" loading="lazy">
+            <span class="card-tag">Bánh kẹo</span>
+          </a>
+          <div class="card-body">
+            <h3 class="card-title"><a href="#sp-02">Bánh quy bơ Danisa hộp thiếc 454g</a></h3>
+            <p class="card-price">385.000đ</p>
+          </div>
+          <div class="card-actions">
+            <a href="#sp-02" class="btn btn-outline">Xem chi tiết</a>
+            <label for="pick-02" class="btn btn-pick"><span class="t-off">+ Chọn sản phẩm</span><span class="t-on">✓ Đã chọn</span></label>
+          </div>
+        </article>
+
+        <article class="product-card cat-banh" style="--i:3">
+          <input type="checkbox" id="pick-03" class="pick-input">
+          <a href="#sp-03" class="card-media" aria-label="Xem chi tiết Mứt gừng mật ong Bảo Minh">
+            <img src="images/mut-gung-mat-ong-bao-minh-hop-180g.png" alt="Mứt gừng mật ong Bảo Minh" loading="lazy">
+            <span class="card-tag">Bánh kẹo</span>
+          </a>
+          <div class="card-body">
+            <h3 class="card-title"><a href="#sp-03">Mứt gừng mật ong Bảo Minh</a></h3>
+            <p class="card-price">79.000đ</p>
+          </div>
+          <div class="card-actions">
+            <a href="#sp-03" class="btn btn-outline">Xem chi tiết</a>
+            <label for="pick-03" class="btn btn-pick"><span class="t-off">+ Chọn sản phẩm</span><span class="t-on">✓ Đã chọn</span></label>
+          </div>
+        </article>
+
+        <article class="product-card cat-uong" style="--i:4">
+          <input type="checkbox" id="pick-04" class="pick-input">
+          <a href="#sp-04" class="card-media" aria-label="Xem chi tiết Rượu vang đỏ Chevalier Delaude Languedoc">
+            <img src="images/ruou-vang-do-chevalier-delaude-languedoc-750ml.png" alt="Rượu vang đỏ Chevalier Delaude Languedoc" loading="lazy">
+            <span class="card-tag">Đồ uống</span>
+          </a>
+          <div class="card-body">
+            <h3 class="card-title"><a href="#sp-04">Rượu vang đỏ Chevalier Delaude Languedoc</a></h3>
+            <p class="card-price">3.450.000đ</p>
+          </div>
+          <div class="card-actions">
+            <a href="#sp-04" class="btn btn-outline">Xem chi tiết</a>
+            <label for="pick-04" class="btn btn-pick"><span class="t-off">+ Chọn sản phẩm</span><span class="t-on">✓ Đã chọn</span></label>
+          </div>
+        </article>
+
+        <article class="product-card cat-tra" style="--i:5">
+          <input type="checkbox" id="pick-05" class="pick-input">
+          <a href="#sp-05" class="card-media" aria-label="Xem chi tiết Bạch trà Tiên Mây Trà Shan">
+            <img src="images/bach-tra-tien-may-tra-shan-100g.png" alt="Bạch trà Tiên Mây Trà Shan" loading="lazy">
+            <span class="card-tag">Trà & cà phê</span>
+          </a>
+          <div class="card-body">
+            <h3 class="card-title"><a href="#sp-05">Bạch trà Tiên Mây Trà Shan</a></h3>
+            <p class="card-price">199.000đ</p>
+          </div>
+          <div class="card-actions">
+            <a href="#sp-05" class="btn btn-outline">Xem chi tiết</a>
+            <label for="pick-05" class="btn btn-pick"><span class="t-off">+ Chọn sản phẩm</span><span class="t-on">✓ Đã chọn</span></label>
+          </div>
+        </article>
+
+        <article class="product-card cat-khac" style="--i:6">
+          <input type="checkbox" id="pick-06" class="pick-input">
+          <a href="#sp-06" class="card-media" aria-label="Xem chi tiết Trầm nụ Thiên Lộc Việt">
+            <img src="images/tram-nu-thien-loc-viet-dang-vi.png" alt="Trầm nụ Thiên Lộc Việt" loading="lazy">
+            <span class="card-tag">Khác</span>
+          </a>
+          <div class="card-body">
+            <h3 class="card-title"><a href="#sp-06">Trầm nụ Thiên Lộc Việt</a></h3>
+            <p class="card-price">180.000đ</p>
+          </div>
+          <div class="card-actions">
+            <a href="#sp-06" class="btn btn-outline">Xem chi tiết</a>
+            <label for="pick-06" class="btn btn-pick"><span class="t-off">+ Chọn sản phẩm</span><span class="t-on">✓ Đã chọn</span></label>
+          </div>
+        </article>
+
+        <article class="product-card cat-khac" style="--i:7">
+          <input type="checkbox" id="pick-07" class="pick-input">
+          <a href="#sp-07" class="card-media" aria-label="Xem chi tiết Tranh gạo thư pháp Thái Hoàng">
+            <img src="images/tranh-gao-thu-phap-thai-hoang-30x40cm.png" alt="Tranh gạo thư pháp Thái Hoàng" loading="lazy">
+            <span class="card-tag">Khác</span>
+          </a>
+          <div class="card-body">
+            <h3 class="card-title"><a href="#sp-07">Tranh gạo thư pháp Thái Hoàng</a></h3>
+            <p class="card-price">2.000.000đ</p>
+          </div>
+          <div class="card-actions">
+            <a href="#sp-07" class="btn btn-outline">Xem chi tiết</a>
+            <label for="pick-07" class="btn btn-pick"><span class="t-off">+ Chọn sản phẩm</span><span class="t-on">✓ Đã chọn</span></label>
+          </div>
+        </article>
+
+        <article class="product-card cat-khac" style="--i:8">
+          <input type="checkbox" id="pick-08" class="pick-input">
+          <a href="#sp-08" class="card-media" aria-label="Xem chi tiết Vòng tay trầm hương Kim Như Nguyện">
+            <img src="images/vong-tay-tram-huong-kim-nhu-nguyen-thien-moc-huong-hat-6mm.png" alt="Vòng tay trầm hương Kim Như Nguyện" loading="lazy">
+            <span class="card-tag">Khác</span>
+          </a>
+          <div class="card-body">
+            <h3 class="card-title"><a href="#sp-08">Vòng tay trầm hương Kim Như Nguyện</a></h3>
+            <p class="card-price">1.000.000đ</p>
+          </div>
+          <div class="card-actions">
+            <a href="#sp-08" class="btn btn-outline">Xem chi tiết</a>
+            <label for="pick-08" class="btn btn-pick"><span class="t-off">+ Chọn sản phẩm</span><span class="t-on">✓ Đã chọn</span></label>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="empty-state">Danh mục này sẽ sớm có sản phẩm mới. Sắp Tết đang chọn lọc thêm cho bạn.</p>
+
+      <a href="#san-pham" class="more-link">Xem thêm sản phẩm →</a>
+    </section>
+
+    <!-- LEFT (wireframe): tóm tắt lựa chọn -->
+    <aside class="panel summary-panel" aria-labelledby="ttl-sum">
+      <h2 class="panel-title" id="ttl-sum">01 — Chọn mẫu hộp quà</h2>
+
+      <input type="radio" name="box" id="box-1" class="box-input" checked>
+      <input type="radio" name="box" id="box-2" class="box-input">
+      <input type="radio" name="box" id="box-3" class="box-input">
+
+      <div class="box-options" role="group" aria-label="Chọn mẫu hộp">
+        <label for="box-1" class="box-option">
+          <img src="images/hop-qua-mau-01.png" alt="Mẫu hộp quà Tết 01">
+          <span>Mẫu hộp 01</span>
+        </label>
+        <label for="box-2" class="box-option">
+          <img src="images/hop-qua-mau-02.png" alt="Mẫu hộp quà Tết 02">
+          <span>Mẫu hộp 02</span>
+        </label>
+        <label for="box-3" class="box-option">
+          <img src="images/hop-qua-mau-03.png" alt="Mẫu hộp quà Tết 03">
+          <span>Mẫu hộp 03</span>
+        </label>
+      </div>
+
+      <div class="gift-visual">
+        <img class="big-box big-box-1" src="images/hop-qua-mau-01.png" alt="Mẫu hộp quà Tết 01">
+        <img class="big-box big-box-2" src="images/hop-qua-mau-02.png" alt="Mẫu hộp quà Tết 02">
+        <img class="big-box big-box-3" src="images/hop-qua-mau-03.png" alt="Mẫu hộp quà Tết 03">
+        <p>Hộp quà đang thiết kế</p>
+      </div>
+
+      <div class="summary-box">
+        <p>Sản phẩm đã chọn: <strong class="picked-count"></strong></p>
+        <p>Tổng giá trị: <strong class="picked-total"></strong></p>
+      </div>
+      <a href="#san-pham" class="btn btn-solid btn-full">Tiếp tục / Hoàn tất hộp quà</a>
+    </aside>
+
+  </div>
+</main>
+
+  <div class="modal" id="sp-01" role="dialog" aria-modal="true" aria-labelledby="sp-01-title">
+    <a href="#san-pham" class="modal-backdrop" aria-label="Đóng"></a>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Chi tiết sản phẩm</h2>
+        <a href="#san-pham" class="modal-close" aria-label="Đóng">× Đóng</a>
+      </div>
+      <div class="modal-grid">
+        <img src="images/bo-am-chen-tra-gom-su-ru-kiln-9-chi-tiet-am-230ml.png" alt="Bộ ấm chén trà gốm sứ Ru Kiln">
+        <div class="modal-info">
+          <p class="modal-code">Mã sản phẩm: ST-SP01</p>
+          <h3 id="sp-01-title">Bộ ấm chén trà gốm sứ Ru Kiln</h3>
+          <p class="modal-price">Giá bán: 289.000đ</p>
+          <p class="modal-desc">Bộ ấm chén theo phong cách thưởng trà Gongfu, đường nét mềm mại, men trang nhã. Thích hợp làm quà biếu ông bà, cha mẹ dịp đầu năm.</p>
+          <dl>
+            <dt>Chất liệu</dt><dd>Gốm sứ</dd>
+            <dt>Quy cách</dt><dd>1 ấm, 1 chén tống, 1 bộ lọc trà, 6 chén uống trà</dd>
+            <dt>Dung tích</dt><dd>Ấm 230ml; chén 70ml/chén</dd>
+            <dt>Kích thước ấm</dt><dd>Dài 14,7cm; cao 8cm</dd>
+          </dl>
+        </div>
+      </div>
+      <label for="pick-01" class="btn btn-solid modal-pick"><span class="t-off">+ Chọn sản phẩm này</span><span class="t-on">✓ Đã chọn sản phẩm này</span></label>
+    </div>
+  </div>
+
+  <div class="modal" id="sp-02" role="dialog" aria-modal="true" aria-labelledby="sp-02-title">
+    <a href="#san-pham" class="modal-backdrop" aria-label="Đóng"></a>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Chi tiết sản phẩm</h2>
+        <a href="#san-pham" class="modal-close" aria-label="Đóng">× Đóng</a>
+      </div>
+      <div class="modal-grid">
+        <img src="images/banh-quy-bo-danisa-hop-thiec-454g.png" alt="Bánh quy bơ Danisa hộp thiếc 454g">
+        <div class="modal-info">
+          <p class="modal-code">Mã sản phẩm: ST-SP02</p>
+          <h3 id="sp-02-title">Bánh quy bơ Danisa hộp thiếc 454g</h3>
+          <p class="modal-price">Giá bán: 385.000đ</p>
+          <p class="modal-desc">Bánh quy bơ kiểu Đan Mạch, thơm béo, giòn xốp với nhiều hình dáng. Hộp thiếc sang trọng, hợp dùng với trà, tiếp khách ngày Tết hoặc làm quà cho gia đình, thầy cô, đồng nghiệp.</p>
+          <dl>
+            <dt>Loại</dt><dd>Bánh quy bơ</dd>
+            <dt>Khối lượng tịnh</dt><dd>454g (hộp thiếc)</dd>
+            <dt>Thành phần nổi bật</dt><dd>Bột mì, đường, bơ, trứng, dừa sấy, nho khô</dd>
+            <dt>Xuất xứ</dt><dd>Indonesia</dd>
+            <dt>Hạn sử dụng</dt><dd>15 tháng, xem ngày in trên hộp</dd>
+            <dt>Bảo quản</dt><dd>Nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp</dd>
+          </dl>
+        </div>
+      </div>
+      <label for="pick-02" class="btn btn-solid modal-pick"><span class="t-off">+ Chọn sản phẩm này</span><span class="t-on">✓ Đã chọn sản phẩm này</span></label>
+    </div>
+  </div>
+
+  <div class="modal" id="sp-03" role="dialog" aria-modal="true" aria-labelledby="sp-03-title">
+    <a href="#san-pham" class="modal-backdrop" aria-label="Đóng"></a>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Chi tiết sản phẩm</h2>
+        <a href="#san-pham" class="modal-close" aria-label="Đóng">× Đóng</a>
+      </div>
+      <div class="modal-grid">
+        <img src="images/mut-gung-mat-ong-bao-minh-hop-180g.png" alt="Mứt gừng mật ong Bảo Minh">
+        <div class="modal-info">
+          <p class="modal-code">Mã sản phẩm: ST-SP03</p>
+          <h3 id="sp-03-title">Mứt gừng mật ong Bảo Minh</h3>
+          <p class="modal-price">Giá bán: 79.000đ</p>
+          <p class="modal-desc">Lát gừng cay ấm đặc trưng hòa quyện vị ngọt dịu, dùng với trà nóng hoặc bày khay bánh mứt ngày Tết. Hộp 180g nhỏ gọn, hợp hộp quà truyền thống.</p>
+          <dl>
+            <dt>Loại</dt><dd>Mứt gừng</dd>
+            <dt>Khối lượng tịnh</dt><dd>180g (hộp)</dd>
+            <dt>Thương hiệu</dt><dd>Bảo Minh</dd>
+            <dt>Xuất xứ</dt><dd>Việt Nam</dd>
+            <dt>Hạn sử dụng</dt><dd>60 ngày</dd>
+            <dt>Bảo quản</dt><dd>Nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp</dd>
+          </dl>
+        </div>
+      </div>
+      <label for="pick-03" class="btn btn-solid modal-pick"><span class="t-off">+ Chọn sản phẩm này</span><span class="t-on">✓ Đã chọn sản phẩm này</span></label>
+    </div>
+  </div>
+
+  <div class="modal" id="sp-04" role="dialog" aria-modal="true" aria-labelledby="sp-04-title">
+    <a href="#san-pham" class="modal-backdrop" aria-label="Đóng"></a>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Chi tiết sản phẩm</h2>
+        <a href="#san-pham" class="modal-close" aria-label="Đóng">× Đóng</a>
+      </div>
+      <div class="modal-grid">
+        <img src="images/ruou-vang-do-chevalier-delaude-languedoc-750ml.png" alt="Rượu vang đỏ Chevalier Delaude Languedoc">
+        <div class="modal-info">
+          <p class="modal-code">Mã sản phẩm: ST-SP04</p>
+          <h3 id="sp-04-title">Rượu vang đỏ Chevalier Delaude Languedoc</h3>
+          <p class="modal-price">Giá bán: 3.450.000đ</p>
+          <p class="modal-desc">Vang đỏ vùng Languedoc, Pháp, sắc đỏ ruby đậm, hương anh đào đen, mâm xôi và gia vị. Vị đậm đà, cân bằng, hợp tiệc sum họp hoặc làm quà biếu Tết.</p>
+          <dl>
+            <dt>Loại</dt><dd>Rượu vang đỏ</dd>
+            <dt>Dung tích</dt><dd>750ml</dd>
+            <dt>Xuất xứ</dt><dd>Pháp, vùng Languedoc</dd>
+            <dt>Giống nho</dt><dd>Syrah, Grenache, Mourvèdre</dd>
+            <dt>Bảo quản</dt><dd>Nơi thoáng mát, tránh ánh nắng trực tiếp</dd>
+          </dl>
+        </div>
+      </div>
+      <label for="pick-04" class="btn btn-solid modal-pick"><span class="t-off">+ Chọn sản phẩm này</span><span class="t-on">✓ Đã chọn sản phẩm này</span></label>
+    </div>
+  </div>
+
+  <div class="modal" id="sp-05" role="dialog" aria-modal="true" aria-labelledby="sp-05-title">
+    <a href="#san-pham" class="modal-backdrop" aria-label="Đóng"></a>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Chi tiết sản phẩm</h2>
+        <a href="#san-pham" class="modal-close" aria-label="Đóng">× Đóng</a>
+      </div>
+      <div class="modal-grid">
+        <img src="images/bach-tra-tien-may-tra-shan-100g.png" alt="Bạch trà Tiên Mây Trà Shan">
+        <div class="modal-info">
+          <p class="modal-code">Mã sản phẩm: ST-SP05</p>
+          <h3 id="sp-05-title">Bạch trà Tiên Mây Trà Shan</h3>
+          <p class="modal-price">Giá bán: 199.000đ</p>
+          <p class="modal-desc">Tuyển từ mầm trà non cây Shan Tuyết cổ thụ vùng núi cao Đông Bắc, búp phủ lông tơ trắng bạc, hương vị thanh nhẹ. Hợp kết hợp cùng bộ ấm chén làm quà Tết.</p>
+          <dl>
+            <dt>Loại</dt><dd>Bạch trà Shan Tuyết cổ thụ</dd>
+            <dt>Khối lượng tịnh</dt><dd>100g</dd>
+            <dt>Thương hiệu</dt><dd>Mây Trà Shan</dd>
+            <dt>Xuất xứ</dt><dd>Vùng núi Đông Bắc Việt Nam</dd>
+            <dt>Cách pha</dt><dd>8–10g trà với 150–200ml nước, 85–90°C</dd>
+            <dt>Bảo quản</dt><dd>Nơi khô ráo, kín, tránh ẩm và mùi lạ</dd>
+          </dl>
+        </div>
+      </div>
+      <label for="pick-05" class="btn btn-solid modal-pick"><span class="t-off">+ Chọn sản phẩm này</span><span class="t-on">✓ Đã chọn sản phẩm này</span></label>
+    </div>
+  </div>
+
+  <div class="modal" id="sp-06" role="dialog" aria-modal="true" aria-labelledby="sp-06-title">
+    <a href="#san-pham" class="modal-backdrop" aria-label="Đóng"></a>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Chi tiết sản phẩm</h2>
+        <a href="#san-pham" class="modal-close" aria-label="Đóng">× Đóng</a>
+      </div>
+      <div class="modal-grid">
+        <img src="images/tram-nu-thien-loc-viet-dang-vi.png" alt="Trầm nụ Thiên Lộc Việt">
+        <div class="modal-info">
+          <p class="modal-code">Mã sản phẩm: ST-SP06</p>
+          <h3 id="sp-06-title">Trầm nụ Thiên Lộc Việt</h3>
+          <p class="modal-price">Giá bán: 180.000đ</p>
+          <p class="modal-desc">Trầm nụ dạng nhỏ, dùng cùng lư xông trầm, tạo không gian ấm cúng cho dịp sum họp và tiếp khách đầu năm.</p>
+          <dl>
+            <dt>Loại</dt><dd>Trầm nụ xông đốt</dd>
+            <dt>Thương hiệu</dt><dd>Thiên Lộc Việt</dd>
+            <dt>Quy cách</dt><dd>Dạng vỉ</dd>
+            <dt>Bảo quản</dt><dd>Nơi khô ráo, tránh ẩm</dd>
+            <dt>Sử dụng</dt><dd>Đốt ở nơi thông thoáng, trên đế chịu nhiệt</dd>
+          </dl>
+        </div>
+      </div>
+      <label for="pick-06" class="btn btn-solid modal-pick"><span class="t-off">+ Chọn sản phẩm này</span><span class="t-on">✓ Đã chọn sản phẩm này</span></label>
+    </div>
+  </div>
+
+  <div class="modal" id="sp-07" role="dialog" aria-modal="true" aria-labelledby="sp-07-title">
+    <a href="#san-pham" class="modal-backdrop" aria-label="Đóng"></a>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Chi tiết sản phẩm</h2>
+        <a href="#san-pham" class="modal-close" aria-label="Đóng">× Đóng</a>
+      </div>
+      <div class="modal-grid">
+        <img src="images/tranh-gao-thu-phap-thai-hoang-30x40cm.png" alt="Tranh gạo thư pháp Thái Hoàng">
+        <div class="modal-info">
+          <p class="modal-code">Mã sản phẩm: ST-SP07</p>
+          <h3 id="sp-07-title">Tranh gạo thư pháp Thái Hoàng</h3>
+          <p class="modal-price">Giá bán: 2.000.000đ</p>
+          <p class="modal-desc">Kết hợp nghệ thuật tạo hình từ hạt gạo với thư pháp truyền thống, mộc mạc mà trang nhã. Dùng trang trí phòng khách, phòng làm việc hoặc làm quà Tết.</p>
+          <dl>
+            <dt>Loại</dt><dd>Tranh gạo thư pháp trang trí</dd>
+            <dt>Chất liệu</dt><dd>Gạo tạo hình</dd>
+            <dt>Kích thước</dt><dd>30 × 40cm</dd>
+            <dt>Nhà cung cấp</dt><dd>Tranh Gạo Thái Hoàng</dd>
+            <dt>Bảo quản</dt><dd>Tránh ẩm, nhiệt độ cao và ánh nắng trực tiếp</dd>
+          </dl>
+        </div>
+      </div>
+      <label for="pick-07" class="btn btn-solid modal-pick"><span class="t-off">+ Chọn sản phẩm này</span><span class="t-on">✓ Đã chọn sản phẩm này</span></label>
+    </div>
+  </div>
+
+  <div class="modal" id="sp-08" role="dialog" aria-modal="true" aria-labelledby="sp-08-title">
+    <a href="#san-pham" class="modal-backdrop" aria-label="Đóng"></a>
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Chi tiết sản phẩm</h2>
+        <a href="#san-pham" class="modal-close" aria-label="Đóng">× Đóng</a>
+      </div>
+      <div class="modal-grid">
+        <img src="images/vong-tay-tram-huong-kim-nhu-nguyen-thien-moc-huong-hat-6mm.png" alt="Vòng tay trầm hương Kim Như Nguyện">
+        <div class="modal-info">
+          <p class="modal-code">Mã sản phẩm: ST-SP08</p>
+          <h3 id="sp-08-title">Vòng tay trầm hương Kim Như Nguyện</h3>
+          <p class="modal-price">Giá bán: 1.000.000đ</p>
+          <p class="modal-desc">Chế tác từ trầm hương Việt Nam, điểm nhấn khảm vàng sang trọng. “Kim Như Nguyện” gửi gắm lời chúc mọi điều thuận ý, hợp làm quà Tết.</p>
+          <dl>
+            <dt>Thương hiệu</dt><dd>Thiên Mộc Hương</dd>
+            <dt>Chất liệu</dt><dd>Trầm hương Việt Nam, chi tiết khảm vàng</dd>
+            <dt>Đường kính hạt</dt><dd>6mm</dd>
+            <dt>Số lượng</dt><dd>52–54 hạt</dd>
+            <dt>Xuất xứ</dt><dd>Việt Nam</dd>
+            <dt>Bảo quản</dt><dd>Tránh hóa chất, nước hoa và va đập mạnh</dd>
+          </dl>
+        </div>
+      </div>
+      <label for="pick-08" class="btn btn-solid modal-pick"><span class="t-off">+ Chọn sản phẩm này</span><span class="t-on">✓ Đã chọn sản phẩm này</span></label>
+    </div>
+  </div>
+
+<!-- SECTION 6: FOOTER -->
+<footer class="site-footer" id="lien-he">
+  <div class="footer-main">
+
+    <!-- LEFT: BRAND -->
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo" aria-label="Sắp Tết - Trang chủ">
+        <img
+          src="images/sap-tet-logo-white.png"
+          alt="Sắp Tết"
+        >
+      </a>
+
+      <p class="footer-tagline">
+        Gói trọn yêu thương,<br>
+        trao gửi ngày xuân.
+      </p>
+
+      <p class="footer-description">
+        Mỗi món quà là một lời chúc,
+        mỗi lần trao tay là một khoảnh khắc
+        yêu thương được gìn giữ.
+      </p>
+    </div>
+
+    <!-- RIGHT: NAVIGATION + CONNECTION -->
+    <div class="footer-right">
+
+      <!-- DISCOVER + SUPPORT -->
+      <div class="footer-navigation">
+
+        <div class="footer-column">
+          <h3>Khám phá</h3>
+          <a href="index.html">Trang chủ</a>
+          <a href="products.html">Bộ sưu tập quà Tết</a>
+          <a href="customize.html">Tự thiết kế hộp quà</a>
+          <a href="about.html#story-title">Câu chuyện Sắp Tết</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Hỗ trợ</h3>
+          <span class="footer-placeholder" title="Nội dung đang hoàn thiện">Hướng dẫn đặt quà</span>
+          <span class="footer-placeholder" title="Nội dung đang hoàn thiện">Câu hỏi thường gặp</span>
+          <a href="#lien-he">Liên hệ</a>
+        </div>
+
+      </div>
+
+      <!-- CONNECT -->
+      <div class="footer-connect">
+        <h3>Kết nối với Sắp Tết</h3>
+
+        <p>
+          Cùng Sắp Tết trao gửi những món quà
+          xuân ý nghĩa.
+        </p>
+
+        <div class="footer-socials">
+          <span class="footer-social-placeholder" title="Đang cập nhật kênh Facebook">Facebook</span>
+          <span class="footer-social-placeholder" title="Đang cập nhật kênh Instagram">Instagram</span>
+          <span class="footer-social-placeholder" title="Đang cập nhật kênh Email">Email</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COPYRIGHT -->
+  <div class="footer-bottom">
+    <p>© 2026 Sắp Tết. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

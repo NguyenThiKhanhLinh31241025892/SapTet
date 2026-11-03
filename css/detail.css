@@ -1,1 +1,27 @@
-
+/* Chi tiết 8 sản phẩm dựa trên thông tin đã có trong source Customize. */
+.detail-container {width:min(1160px,calc(100% - 40px));margin:0 auto;padding:24px 0 70px;}
+.detail-breadcrumb {font-size:13px;color:#8a6b4a;margin:12px 0 26px;}
+.detail-breadcrumb a:hover,.detail-breadcrumb a:focus-visible {text-decoration:underline;}
+.detail-container h1 {font-size:clamp(27px,4vw,44px);line-height:1.2;margin-bottom:14px;}
+.detail-intro {color:#7a5a3a;max-width:780px;margin-bottom:24px;}
+.detail-shortcuts {display:flex;flex-wrap:wrap;gap:9px;margin:26px 0 40px;}
+.detail-shortcuts a {font-size:12px;padding:9px 12px;border:1px solid #e6d9bf;border-radius:999px;background:#fff;}
+.detail-shortcuts a:hover,.detail-shortcuts a:focus-visible {border-color:#B50500;color:#B50500;}
+.detail-section {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:34px;scroll-margin-top:24px;padding:28px 0;border-top:1px solid #e6d9bf;}
+.detail-section:target{background:#fff8ed;outline:2px solid #C8A15A;outline-offset:8px;border-radius:8px;}
+.detail-section__image {display:flex;align-items:center;justify-content:center;min-height:340px;padding:25px;background:#fff;border:1px solid #ead9cc;border-radius:15px;}
+.detail-section__image img {max-width:100%;width:100%;height:360px;object-fit:contain;}
+.detail-code {color:#8a6b4a;font-size:13px;}
+.detail-section h2 {font-size:clamp(20px,2.4vw,30px);line-height:1.32;margin:12px 0;}
+.detail-price {font-size:22px;color:#B50500;font-weight:700;margin-bottom:14px;}
+.detail-description {font-size:14px;margin:12px 0 18px;}
+.detail-specs {border-top:1px solid #ead9cc;font-size:13px;}
+.detail-specs>div {display:grid;grid-template-columns:145px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid #eee0d5;}
+.detail-specs dt {font-weight:700;}
+.detail-specs dd {margin:0;overflow-wrap:anywhere;}
+.detail-action {display:inline-block;margin-top:20px;background:#B50500;color:#fff;padding:12px 20px;border-radius:8px;font-weight:700;font-size:13px;}
+.detail-action:hover,.detail-action:focus-visible {background:#9A1708;}
+.detail-end {padding:30px 0;}
+.detail-end a {text-decoration:underline;}
+@media(max-width:768px){.detail-section{grid-template-columns:1fr;gap:22px;}.detail-section__image{min-height:270px;}.detail-section__image img{height:280px;}}
+@media(max-width:480px){.detail-container{width:min(100% - 28px,1160px);}.detail-specs>div{grid-template-columns:105px minmax(0,1fr);gap:8px;}.detail-shortcuts{gap:7px;}}
