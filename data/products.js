@@ -113,3 +113,26 @@ const products = [
     isCombo: false
   }
 ];
+
+// BƯỚC 4 - Giá 3 mẫu hộp của trang Customize (giá mẫu do nhóm tự đặt, chưa xác minh để kinh doanh).
+// Để riêng khỏi mảng products để KHÔNG lẫn vào danh sách combo (isCombo true) và món lẻ (isCombo false).
+const giftBoxes = [
+  {
+    id: "box-001",
+    name: "Mẫu hộp 01",
+    price: 59000,
+    image: "images/hop-qua-mau-01.png"
+  },
+  {
+    id: "box-002",
+    name: "Mẫu hộp 02",
+    price: 129000,
+    image: "images/hop-qua-mau-02.png"
+  },
+  {
+    id: "box-003",
+    name: "Mẫu hộp 03",
+    price: 89000,
+    image: "images/hop-qua-mau-03.png"
+  }
+];

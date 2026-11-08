@@ -21,7 +21,7 @@ a:focus-visible, .btn:focus-visible, select:focus-visible, input:focus-visible {
 
 .layout {
     display: grid; grid-template-columns: minmax(260px, 5fr) 11fr; gap: 24px;
-    counter-reset: picked; align-items: start;
+    align-items: start;
 }
 
 .products-panel { grid-column: 2; grid-row: 1; }
@@ -35,7 +35,7 @@ a:focus-visible, .btn:focus-visible, select:focus-visible, input:focus-visible {
 
 .panel-title { font-size: 15px; letter-spacing: .05em; text-transform: uppercase; font-weight: 700; margin-bottom: 16px; }
 
-.filter-input, .pick-input {
+.filter-input {
     position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;
 }
 
@@ -127,8 +127,6 @@ a:focus-visible, .btn:focus-visible, select:focus-visible, input:focus-visible {
 
 .btn-full { width: 100%; min-height: 46px; }
 
-.t-on { display: none; }
-
 .empty-state { display: none; text-align: center; padding: 40px 16px; border: 1px dashed var(--color-gold); border-radius: 12px; background: var(--color-soft); }
 
 .more-link { display: block; width: max-content; margin: 24px auto 0; font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; transition: color .25s, letter-spacing .25s; }
@@ -148,13 +146,9 @@ a:focus-visible, .btn:focus-visible, select:focus-visible, input:focus-visible {
 
 .summary-box { border: 1px solid var(--color-line); border-radius: 10px; padding: 14px 16px; margin-bottom: 16px; font-size: 14px; }
 
-.picked-count::before { content: counter(picked); }
-
 .summary-hint { margin-top: 4px; font-size: 12.5px; color: #8a6b4a; }
 
 .modal { display: none; position: fixed; inset: 0; z-index: 100; place-items: center; padding: 16px; }
-
-.modal:target { display: grid; }
 
 .modal-backdrop { position: absolute; inset: 0; background: rgba(60, 8, 4, .6); backdrop-filter: blur(3px); animation: fade .3s ease; }
 
@@ -194,17 +188,6 @@ a:focus-visible, .btn:focus-visible, select:focus-visible, input:focus-visible {
 
 .modal-pick { width: 100%; min-height: 50px; }
 
-.pick-input:checked ~ .card-media { outline: 3px solid var(--color-gold); outline-offset: -3px; }
-
-.pick-input:checked ~ .card-actions .btn-pick,
-.pick-input:checked ~ .card-actions .btn-pick:hover { background: var(--color-green); border-color: var(--color-green); color: var(--color-cream); }
-
-.pick-input:checked ~ .card-actions .t-off { display: none; }
-
-.pick-input:checked ~ .card-actions .t-on { display: inline; }
-
-.pick-input:focus-visible ~ .card-actions .btn-pick { outline: 3px solid var(--color-gold); outline-offset: 3px; }
-
 .products-panel:has(#f-hat:checked) .product-card { display: none; }
 
 .products-panel:has(#f-hat:checked) .empty-state { display: block; }
@@ -241,54 +224,6 @@ a:focus-visible, .btn:focus-visible, select:focus-visible, input:focus-visible {
 
 .products-panel:has(#f-khac:checked) .product-card:not(.cat-khac) { display: none; }
 
-.layout:has(#pick-01:checked) label[for="pick-01"] .t-off { display: none; }
-
-.layout:has(#pick-01:checked) label[for="pick-01"] .t-on { display: inline; }
-
-body:has(#pick-01:checked) #sp-01 .modal-pick { background: var(--color-green); border-color: var(--color-green); }
-
-.layout:has(#pick-02:checked) label[for="pick-02"] .t-off { display: none; }
-
-.layout:has(#pick-02:checked) label[for="pick-02"] .t-on { display: inline; }
-
-body:has(#pick-02:checked) #sp-02 .modal-pick { background: var(--color-green); border-color: var(--color-green); }
-
-.layout:has(#pick-03:checked) label[for="pick-03"] .t-off { display: none; }
-
-.layout:has(#pick-03:checked) label[for="pick-03"] .t-on { display: inline; }
-
-body:has(#pick-03:checked) #sp-03 .modal-pick { background: var(--color-green); border-color: var(--color-green); }
-
-.layout:has(#pick-04:checked) label[for="pick-04"] .t-off { display: none; }
-
-.layout:has(#pick-04:checked) label[for="pick-04"] .t-on { display: inline; }
-
-body:has(#pick-04:checked) #sp-04 .modal-pick { background: var(--color-green); border-color: var(--color-green); }
-
-.layout:has(#pick-05:checked) label[for="pick-05"] .t-off { display: none; }
-
-.layout:has(#pick-05:checked) label[for="pick-05"] .t-on { display: inline; }
-
-body:has(#pick-05:checked) #sp-05 .modal-pick { background: var(--color-green); border-color: var(--color-green); }
-
-.layout:has(#pick-06:checked) label[for="pick-06"] .t-off { display: none; }
-
-.layout:has(#pick-06:checked) label[for="pick-06"] .t-on { display: inline; }
-
-body:has(#pick-06:checked) #sp-06 .modal-pick { background: var(--color-green); border-color: var(--color-green); }
-
-.layout:has(#pick-07:checked) label[for="pick-07"] .t-off { display: none; }
-
-.layout:has(#pick-07:checked) label[for="pick-07"] .t-on { display: inline; }
-
-body:has(#pick-07:checked) #sp-07 .modal-pick { background: var(--color-green); border-color: var(--color-green); }
-
-.layout:has(#pick-08:checked) label[for="pick-08"] .t-off { display: none; }
-
-.layout:has(#pick-08:checked) label[for="pick-08"] .t-on { display: inline; }
-
-body:has(#pick-08:checked) #sp-08 .modal-pick { background: var(--color-green); border-color: var(--color-green); }
-
 @media (max-width: 1024px) {
 .layout { grid-template-columns: 1fr; }
 .products-panel, .summary-panel { grid-column: 1; position: static; }
@@ -317,10 +252,6 @@ body:has(#pick-08:checked) #sp-08 .modal-pick { background: var(--color-green); 
 }
 
 .card-actions .btn { min-height: 48px; line-height: 1.3; padding: 6px 8px; }
-
-.layout { counter-reset: picked total; }
-
-.picked-total::before { content: counter(total) " nghìn đ"; }
 
 .box-input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 
@@ -401,21 +332,74 @@ body:has(#pick-08:checked) #sp-08 .modal-pick { background: var(--color-green); 
 .modal-grid > img { max-width: 220px; }
 }
 
-#pick-01:checked { counter-increment: picked total 289; }
-
-#pick-02:checked { counter-increment: picked total 385; }
-
-#pick-03:checked { counter-increment: picked total 79; }
-
-#pick-04:checked { counter-increment: picked total 3450; }
-
-#pick-05:checked { counter-increment: picked total 199; }
-
-#pick-06:checked { counter-increment: picked total 180; }
-
-#pick-07:checked { counter-increment: picked total 2000; }
-
-#pick-08:checked { counter-increment: picked total 1000; }
-
 /* Features absent from HTML/CSS-only Buổi 2 */
 .demo-feature-note { margin: -6px 0 14px; font-size: 12px; color: #846e60; }
+
+/* ===== Bước 4 - JavaScript: số lượng, tổng tiền, popup, ngân sách ===== */
+
+/* Popup: mở bằng class .is-open (thay cho :target) */
+.modal.is-open { display: grid; }
+
+body.modal-open { overflow: hidden; }
+
+.modal-backdrop { border: 0; padding: 0; width: 100%; height: 100%; cursor: default; }
+
+.modal-close { background: transparent; font: inherit; color: inherit; cursor: pointer; }
+
+.modal-close:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 2px; }
+
+.modal-actions { display: grid; gap: 10px; }
+
+.modal-qty { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-weight: 600; color: var(--color-green); }
+
+.modal-qty .qty-control { width: 170px; }
+
+/* Thẻ sản phẩm được chọn */
+.product-card.is-selected .card-media { outline: 3px solid var(--color-gold); outline-offset: -3px; }
+
+.pick-cell { display: grid; }
+
+.btn-pick[hidden], .qty-control[hidden], .modal-qty[hidden], .modal-pick[hidden] { display: none; }
+
+/* Bộ tăng giảm số lượng */
+.qty-control {
+    display: grid; grid-template-columns: 40px 1fr 40px; align-items: center; min-height: 48px;
+    border: 1.5px solid var(--color-green); border-radius: 8px; overflow: hidden;
+    background: var(--color-green); color: var(--color-cream);
+}
+
+.qty-control button {
+    height: 100%; min-height: 44px; border: 0; background: transparent; color: inherit;
+    font: inherit; font-size: 20px; font-weight: 700; line-height: 1; cursor: pointer;
+}
+
+.qty-control button:hover:not(:disabled) { background: rgba(255, 255, 255, .18); }
+
+.qty-control button:disabled { opacity: .4; cursor: not-allowed; }
+
+.qty-control button:focus-visible { outline: 3px solid var(--color-gold); outline-offset: -3px; }
+
+.qty-value { text-align: center; font-weight: 700; font-size: 15px; }
+
+/* Giá hiển thị dưới mẫu hộp */
+.box-price { font-size: 12px; font-weight: 700; color: var(--color-red); }
+
+/* Tóm tắt và ngân sách */
+.summary-box strong { font-variant-numeric: tabular-nums; }
+
+.budget { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--color-line); }
+
+.budget label { display: block; margin-bottom: 6px; font-weight: 600; }
+
+.budget input {
+    width: 100%; height: 42px; padding: 0 12px; font: inherit; font-size: 14px; color: inherit;
+    border: 1px solid var(--color-line); border-radius: 8px; background: var(--color-cream);
+}
+
+.budget input[aria-invalid="true"] { border-color: var(--color-red); }
+
+.budget-status { margin-top: 6px; font-size: 12.5px; color: #7a5a3a; }
+
+.budget-status.is-ok { color: var(--color-green); font-weight: 600; }
+
+.budget-status.is-over { color: var(--color-red); font-weight: 700; }
