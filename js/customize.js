@@ -119,6 +119,54 @@
     grid.querySelectorAll(".product-card").forEach((card) => cards.set(card.dataset.id, card));
   }
 
+  /* ===== Tìm kiếm, lọc danh mục và sắp xếp món quà lẻ (không đổi lựa chọn đã chọn) ===== */
+  const customSearch = document.querySelector("#custom-search");
+  const customSort = document.querySelector("#custom-sort");
+  const customResults = document.querySelector("#custom-results");
+  const emptyState = document.querySelector(".products-panel .empty-state");
+  const CATEGORY_BY_RADIO = {
+    "f-all": null,
+    "f-banh": "Bánh kẹo",
+    "f-tra": "Trà & cà phê",
+    "f-hat": "Các loại hạt",
+    "f-uong": "Đồ uống",
+    "f-khac": "Khác"
+  };
+  function normalizeText(value) {
+    return String(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/đ/g, "d").replace(/Đ/g, "D").toLocaleLowerCase("vi-VN").trim();
+  }
+  function applyProductFilters() {
+    if (!grid || !customSearch || !customSort) return;
+    const search = normalizeText(customSearch.value);
+    const selectedRadio = document.querySelector('input[name="filter"]:checked');
+    const selectedCategory = selectedRadio ? CATEGORY_BY_RADIO[selectedRadio.id] : null;
+    const arranged = items.slice(); // Không sửa mảng products dùng chung.
+
+    if (customSort.value === "asc") arranged.sort((a, b) => a.price - b.price);
+    if (customSort.value === "desc") arranged.sort((a, b) => b.price - a.price);
+
+    let matched = 0;
+    arranged.forEach((product) => {
+      const card = cards.get(product.id);
+      if (!card) return;
+      grid.appendChild(card); // Chỉ di chuyển thẻ, giữ nguyên số lượng đã chọn.
+      const visible = normalizeText(product.name).includes(search) &&
+        (!selectedCategory || product.category === selectedCategory);
+      card.hidden = !visible;
+      // Giải quyết trường hợp CSS cũ dùng display:flex ghi đè thuộc tính hidden.
+      card.style.display = visible ? "" : "none";
+      if (visible) matched++;
+    });
+
+    if (emptyState) {
+      emptyState.textContent = "Không tìm thấy sản phẩm phù hợp với từ khóa và danh mục đã chọn.";
+      emptyState.hidden = matched !== 0;
+      emptyState.style.display = matched === 0 ? "block" : "none";
+    }
+    if (customResults) customResults.textContent = `Hiển thị ${matched}/${items.length} sản phẩm`;
+  }
+
   /* ===== Mẫu hộp ===== */
 
   function getBoxInputs() {
@@ -314,6 +362,45 @@
     updateSummary();
   }
 
+  /* ===== Thêm toàn bộ HỘP QUÀ TỰ PHỐI vào giỏ ===== */
+  const addCustomButton = document.querySelector("#custom-add-cart");
+  const customCartStatus = document.querySelector("#custom-cart-status");
+
+  function showCartStatus(message, state = "error") {
+    if (!customCartStatus) return;
+    customCartStatus.textContent = message;
+    customCartStatus.dataset.state = state;
+  }
+
+  function handleAddCustomToCart() {
+    const selection = window.getCustomSelection();
+    if (!selection.box) {
+      showCartStatus("Bạn hãy chọn mẫu hộp trước khi thêm vào giỏ.");
+      return;
+    }
+    if (selection.items.length === 0) {
+      showCartStatus("Bạn cần chọn ít nhất một món quà để hoàn tất hộp tự phối.");
+      return;
+    }
+    if (selection.budget > 0 && selection.total > selection.budget) {
+      showCartStatus("Hộp quà đang vượt ngân sách. Hãy điều chỉnh trước khi thêm vào giỏ.");
+      budgetInput.focus();
+      return;
+    }
+    if (typeof window.addCustomToCart !== "function") {
+      showCartStatus("Chưa tải được chức năng giỏ hàng. Hãy kiểm tra js/cart.js.");
+      return;
+    }
+
+    const newId = window.addCustomToCart(selection);
+    if (!newId) {
+      showCartStatus("Không thể thêm hộp quà vào giỏ. Hãy thử lại.");
+      return;
+    }
+    showCartStatus("Đã thêm hộp quà tự phối vào giỏ.", "success");
+    window.location.href = "cart.html";
+  }
+
   /* ===== Sự kiện ===== */
 
   function handleClick(event) {
@@ -345,6 +432,12 @@
   function init() {
     renderProducts();
     renderBoxLabels();
+    if (customSearch) customSearch.addEventListener("input", applyProductFilters);
+    if (customSort) customSort.addEventListener("change", applyProductFilters);
+    document.querySelectorAll('input[name="filter"]').forEach((radio) => {
+      radio.addEventListener("change", applyProductFilters);
+    });
+    applyProductFilters();
 
     items.forEach((product) => updateCard(product.id));
 
@@ -356,12 +449,13 @@
     });
     getBoxInputs().forEach((input) => input.addEventListener("change", updateSummary));
     budgetInput.addEventListener("input", handleBudgetInput);
+    if (addCustomButton) addCustomButton.addEventListener("click", handleAddCustomToCart);
 
     // Trình duyệt có thể khôi phục ô nhập và mẫu hộp khi tải lại trang: đọc lại cho khớp.
     handleBudgetInput();
   }
 
-  // Để trang giỏ hàng / bước sau lấy được lựa chọn hiện tại (hiện chưa liên kết với giỏ hàng).
+  // Cung cấp toàn bộ lựa chọn hiện tại để thêm vào giỏ như một hộp quà tự phối.
   window.getCustomSelection = function () {
     const totals = getTotals();
     return {

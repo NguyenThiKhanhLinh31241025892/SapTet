@@ -31,6 +31,23 @@
                 <a href="products.html" class="nav-link">Hộp quà Tết</a>
                 <a href="customize.html" class="nav-link">Tự thiết kế hộp quà</a>
                 <a href="about.html" class="nav-link active" aria-current="page">Về Sắp Tết</a>
+                <a href="cart.html" class="nav-link cart-link" aria-label="Giỏ hàng" data-cart-link>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <circle cx="8" cy="21" r="1"></circle>
+                        <circle cx="19" cy="21" r="1"></circle>
+                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                    </svg>
+                    <span class="cart-count" data-cart-count hidden>0</span>
+                </a>
                 
                 <span class="login-link login-placeholder" title="Đăng nhập chưa được triển khai trong Buổi 2">
                     <svg
@@ -316,5 +333,7 @@
   </div>
 </footer>
 
+<script src="data/products.js"></script>
+<script src="js/cart.js"></script>
 </body>
 </html>

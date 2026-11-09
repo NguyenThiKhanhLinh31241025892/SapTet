@@ -33,6 +33,10 @@ function renderCartItem({ product, quantity, lineTotal }) {
   const detailURL = `product-detail.html?id=${encodeURIComponent(product.id)}`;
   // Theo data-contract chỉ combo có trang chi tiết (?id=combo-xxx); món lẻ chưa có link.
   const title = product.isCombo ? `<a href="${detailURL}">${name}</a>` : name;
+  const customContents = Array.isArray(product.customItems)
+    ? `<p class="cart-item__components">Bên trong hộp: ${product.customItems.map((item) =>
+        `${escapeHTML(item.name)} × ${item.quantity}`).join("; ")}</p>`
+    : "";
 
   return `
     <li class="cart-item">
@@ -43,6 +47,7 @@ function renderCartItem({ product, quantity, lineTotal }) {
         <p class="cart-item__tag">${escapeHTML(product.category)}</p>
         <h2 class="cart-item__name">${title}</h2>
         <p class="cart-item__price">Đơn giá: ${formatPrice(product.price)}</p>
+        ${customContents}
       </div>
       <div class="cart-item__actions">
         <div class="cart-qty" role="group" aria-label="Số lượng ${name}">

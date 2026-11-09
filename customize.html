@@ -27,6 +27,23 @@
                 <a href="products.html" class="nav-link">Hộp quà Tết</a>
                 <a href="customize.html" class="nav-link active" aria-current="page">Tự thiết kế hộp quà</a>
                 <a href="about.html" class="nav-link">Về Sắp Tết</a>
+                <a href="cart.html" class="nav-link cart-link" aria-label="Giỏ hàng" data-cart-link>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <circle cx="8" cy="21" r="1"></circle>
+                        <circle cx="19" cy="21" r="1"></circle>
+                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                    </svg>
+                    <span class="cart-count" data-cart-count hidden>0</span>
+                </a>
                 
                 <span class="login-link login-placeholder" title="Đăng nhập chưa được triển khai trong Buổi 2">
                     <svg
@@ -82,20 +99,20 @@
         <label for="f-khac" class="tab">Khác</label>
       </div>
 
-      <div class="toolbar" role="group" aria-label="Minh họa thanh tìm kiếm và sắp xếp">
+      <div class="toolbar" role="group" aria-label="Tìm kiếm và sắp xếp món quà">
         <label class="search-box">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-          <input type="search" disabled name="q" placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm sản phẩm">
+          <input type="search" id="custom-search" name="q" placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm sản phẩm">
         </label>
         <label class="sort-box">Sắp xếp:
-          <select name="sort" disabled aria-label="Sắp xếp">
-            <option>Mặc định</option>
-            <option>Giá tăng dần</option>
-            <option>Giá giảm dần</option>
+          <select id="custom-sort" name="sort" aria-label="Sắp xếp">
+            <option value="default">Mặc định</option>
+            <option value="asc">Giá tăng dần</option>
+            <option value="desc">Giá giảm dần</option>
           </select>
         </label>
       </div>
-      <p class="demo-feature-note">Tìm kiếm và sắp xếp sẽ được phát triển ở giai đoạn sau.</p>
+      <p id="custom-results" class="custom-results" role="status" aria-live="polite"></p>
 
       <div class="product-grid" id="product-grid"></div>
 
@@ -149,7 +166,8 @@
           <p id="budget-status" class="budget-status" role="status" aria-live="polite"></p>
         </div>
       </div>
-      <a href="#san-pham" class="btn btn-solid btn-full">Tiếp tục / Hoàn tất hộp quà</a>
+      <button type="button" id="custom-add-cart" class="btn btn-solid btn-full">Thêm hộp quà tự phối vào giỏ hàng</button>
+      <p id="custom-cart-status" class="custom-cart-status" role="status" aria-live="polite"></p>
     </aside>
 
   </div>
@@ -260,6 +278,7 @@
 
 <!-- Thứ tự bắt buộc: dữ liệu -> JavaScript của trang -->
 <script src="data/products.js"></script>
+<script src="js/cart.js"></script>
 <script src="js/customize.js"></script>
 </body>
 </html>

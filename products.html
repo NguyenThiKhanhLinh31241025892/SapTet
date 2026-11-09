@@ -26,6 +26,23 @@
                 <a href="products.html" class="nav-link active" aria-current="page">Hộp quà Tết</a>
                 <a href="customize.html" class="nav-link">Tự thiết kế hộp quà</a>
                 <a href="about.html" class="nav-link">Về Sắp Tết</a>
+                <a href="cart.html" class="nav-link cart-link" aria-label="Giỏ hàng" data-cart-link>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <circle cx="8" cy="21" r="1"></circle>
+                        <circle cx="19" cy="21" r="1"></circle>
+                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                    </svg>
+                    <span class="cart-count" data-cart-count hidden>0</span>
+                </a>
                 
                 <span class="login-link login-placeholder" title="Đăng nhập chưa được triển khai trong Buổi 2">
                     <svg
@@ -63,7 +80,24 @@
   <section class="catalog-products">
     <div class="catalog-container">
       <h2>Khám phá các combo hộp quà</h2>
-      <p class="catalog-subtitle">Chọn một hộp quà để xem hình ảnh, thông tin và giá bán chi tiết.</p>
+      <p class="catalog-subtitle">Tìm hộp quà theo tên, danh mục hoặc mức giá phù hợp.</p>
+      <div class="catalog-controls" role="search" aria-label="Tìm kiếm, lọc và sắp xếp hộp quà">
+        <label class="catalog-control"><span>Tìm theo tên</span>
+          <input id="combo-search" type="search" placeholder="Ví dụ: Phúc Lộc" autocomplete="off">
+        </label>
+        <label class="catalog-control"><span>Danh mục</span>
+          <select id="combo-category"><option value="">Tất cả danh mục</option></select>
+        </label>
+        <label class="catalog-control"><span>Sắp xếp theo giá</span>
+          <select id="combo-sort">
+            <option value="default">Mặc định</option>
+            <option value="asc">Giá tăng dần</option>
+            <option value="desc">Giá giảm dần</option>
+          </select>
+        </label>
+      </div>
+      <p id="combo-results" class="catalog-results" role="status" aria-live="polite"></p>
+      <p id="combo-notice" class="catalog-notice" role="status" aria-live="polite"></p>
       <div class="catalog-grid" id="combo-list" aria-live="polite">
         <p class="catalog-empty">Đang tải danh sách hộp quà...</p>
       </div>
@@ -148,6 +182,7 @@
   </div>
 </footer>
 <script src="data/products.js"></script>
+<script src="js/cart.js"></script>
 <script src="js/products-page.js"></script>
 </body>
 </html>
