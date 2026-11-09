@@ -419,3 +419,6 @@
     transition: none;
   }
 }
+
+/* Hiển thị danh sách món nằm trong một hộp quà tự phối. */
+.cart-item__components { margin-top: 8px; font-size: 12px; line-height: 1.6; color: #765a42; }

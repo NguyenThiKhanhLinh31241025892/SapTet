@@ -23,10 +23,36 @@
       if (!line || typeof line.id !== "string") return;
       const quantity = Math.floor(Number(line.quantity));
       if (!Number.isFinite(quantity) || quantity < 1) return;
-      const current = merged.get(line.id) || 0;
-      merged.set(line.id, Math.min(current + quantity, MAX_QUANTITY));
+      const safeQuantity = Math.min(quantity, MAX_QUANTITY);
+
+      if (line.type === "custom") {
+        // Một hộp tự phối có ID riêng, mẫu hộp và danh sách món quà bên trong.
+        if (typeof line.boxId !== "string" || !Array.isArray(line.items) || !line.items.length) return;
+        const itemQuantities = new Map();
+        line.items.forEach((item) => {
+          if (!item || typeof item.id !== "string") return;
+          const qty = Math.floor(Number(item.quantity));
+          if (Number.isFinite(qty) && qty > 0) {
+            itemQuantities.set(item.id, Math.min((itemQuantities.get(item.id) || 0) + qty, MAX_QUANTITY));
+          }
+        });
+        if (!itemQuantities.size) return;
+        merged.set(line.id, {
+          id: line.id,
+          type: "custom",
+          quantity: safeQuantity,
+          boxId: line.boxId,
+          items: Array.from(itemQuantities, ([id, quantity]) => ({ id, quantity }))
+        });
+        return;
+      }
+      // Giữ nguyên định dạng combo cũ: { id, quantity }.
+      if (line.type && line.type !== "combo") return;
+      const existing = merged.get(line.id);
+      const count = existing ? existing.quantity : 0;
+      merged.set(line.id, { id: line.id, quantity: Math.min(count + safeQuantity, MAX_QUANTITY) });
     });
-    return Array.from(merged, ([id, quantity]) => ({ id, quantity }));
+    return Array.from(merged.values());
   }
 
   function readCart() {
@@ -82,6 +108,29 @@
     return true;
   }
 
+  // Thêm MỘT HỘP TỰ PHỐI (không tạo 8 dòng món lẻ trong giỏ).
+  // Mỗi lần hoàn tất một thiết kế sẽ có một ID riêng, giữ được mẫu hộp và số lượng món.
+  function addCustomToCart(selection) {
+    if (!selection || !selection.box || !Array.isArray(selection.items)) return false;
+    if (typeof giftBoxes === "undefined" || !Array.isArray(giftBoxes)) return false;
+    const box = giftBoxes.find((entry) => entry.id === selection.box.id);
+    if (!box) return false;
+
+    const items = selection.items.map((line) => ({
+      id: line.id,
+      quantity: Math.floor(Number(line.quantity))
+    }));
+    if (!items.length || items.some((item) =>
+      !Number.isInteger(item.quantity) || item.quantity < 1 || item.quantity > MAX_QUANTITY ||
+      !findProduct(item.id) || findProduct(item.id).isCombo !== false)) return false;
+
+    const uniqueID = `custom-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+    const cart = readCart();
+    cart.push({ id: uniqueID, type: "custom", quantity: 1, boxId: box.id, items });
+    writeCart(cart);
+    return uniqueID;
+  }
+
   function increaseQuantity(productId) {
     const cart = readCart();
     const line = cart.find((item) => item.id === productId);
@@ -113,17 +162,35 @@
 
   // Trả về [{ product, quantity, lineTotal }]; bỏ qua dòng có id không còn trong products.
   function getCartItems() {
-    return readCart()
-      .map((line) => {
-        const product = findProduct(line.id);
-        if (!product) return null;
-        return {
-          product,
-          quantity: line.quantity,
-          lineTotal: product.price * line.quantity
+    return readCart().map((line) => {
+      if (line.type === "custom") {
+        const box = typeof giftBoxes !== "undefined" && Array.isArray(giftBoxes)
+          ? giftBoxes.find((entry) => entry.id === line.boxId) : null;
+        if (!box) return null;
+        const parts = line.items.map((item) => {
+          const itemProduct = findProduct(item.id);
+          if (!itemProduct || itemProduct.isCombo !== false) return null;
+          return { name: itemProduct.name, id: item.id, quantity: item.quantity,
+            price: itemProduct.price };
+        });
+        if (parts.some((part) => !part)) return null;
+        const boxUnitPrice = box.price + parts.reduce((sum, item) =>
+          sum + item.price * item.quantity, 0);
+        const product = {
+          id: line.id,
+          name: `Hộp quà tự thiết kế – ${box.name}`,
+          category: "Hộp quà tự phối",
+          image: box.image,
+          price: boxUnitPrice,
+          isCombo: false,
+          customItems: parts
         };
-      })
-      .filter(Boolean);
+        return { product, quantity: line.quantity, lineTotal: boxUnitPrice * line.quantity };
+      }
+      const product = findProduct(line.id);
+      if (!product) return null;
+      return { product, quantity: line.quantity, lineTotal: product.price * line.quantity };
+    }).filter(Boolean);
   }
 
   function getCartCount() {
@@ -157,6 +224,7 @@
   // (cart-page.js, detail.js... gọi trực tiếp theo tên)
   Object.assign(window, {
     addToCart,
+    addCustomToCart,
     increaseQuantity,
     decreaseQuantity,
     removeFromCart,

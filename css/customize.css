@@ -188,9 +188,7 @@ a:focus-visible, .btn:focus-visible, select:focus-visible, input:focus-visible {
 
 .modal-pick { width: 100%; min-height: 50px; }
 
-.products-panel:has(#f-hat:checked) .product-card { display: none; }
 
-.products-panel:has(#f-hat:checked) .empty-state { display: block; }
 
 #f-all:checked ~ .filter-tabs label[for="f-all"] { background: var(--color-red); color: var(--color-cream); border-color: var(--color-red); }
 
@@ -216,13 +214,9 @@ a:focus-visible, .btn:focus-visible, select:focus-visible, input:focus-visible {
 
 #f-khac:focus-visible ~ .filter-tabs label[for="f-khac"] { outline: 3px solid var(--color-gold); outline-offset: 3px; }
 
-.products-panel:has(#f-banh:checked) .product-card:not(.cat-banh) { display: none; }
 
-.products-panel:has(#f-tra:checked) .product-card:not(.cat-tra) { display: none; }
 
-.products-panel:has(#f-uong:checked) .product-card:not(.cat-uong) { display: none; }
 
-.products-panel:has(#f-khac:checked) .product-card:not(.cat-khac) { display: none; }
 
 @media (max-width: 1024px) {
 .layout { grid-template-columns: 1fr; }
@@ -403,3 +397,15 @@ body.modal-open { overflow: hidden; }
 .budget-status.is-ok { color: var(--color-green); font-weight: 600; }
 
 .budget-status.is-over { color: var(--color-red); font-weight: 700; }
+
+/* Bước 3 – Kết hợp lọc CSS đang có với tìm kiếm/sắp xếp bằng JavaScript. */
+.product-card[hidden] { display:none !important; }
+.custom-results { margin:0 0 12px; font-size:13px; color:#7a5a3a; }
+
+/* Bước 3: JavaScript là nguồn điều khiển duy nhất cho lọc/tìm kiếm. */
+.products-panel .product-card[hidden],
+.products-panel .empty-state[hidden] { display: none !important; }
+.custom-cart-status { margin-top: 12px; font-size: 13px; line-height: 1.5; min-height: 1.5em; }
+.custom-cart-status[data-state="error"] { color: #B50500; font-weight: 700; }
+.custom-cart-status[data-state="success"] { color: var(--color-green, #354A3A); }
+#custom-add-cart { cursor: pointer; }

@@ -29,3 +29,16 @@
 
 /* Thông báo khi danh sách combo rỗng (Bước 2). */
 .catalog-empty { grid-column: 1 / -1; padding: 28px; text-align: center; background: #FFFDF8; border: 1px dashed #C8A15A; border-radius: 12px; }
+
+/* Bước 3 – Bộ lọc combo, giữ màu thương hiệu và responsive từ Buổi 2 */
+.catalog-controls { display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap:14px; margin:16px 0 12px; }
+.catalog-control { display:flex; flex-direction:column; gap:6px; font-size:13px; font-weight:600; }
+.catalog-control input,.catalog-control select { width:100%; min-width:0; min-height:44px; padding:9px 12px; border:1px solid #d9c6b5; border-radius:8px; background:#fff; color:#7b271b; font:inherit; }
+.catalog-control input:focus-visible,.catalog-control select:focus-visible { outline:3px solid #C8A15A; outline-offset:2px; }
+.catalog-results { margin:10px 0 20px; color:#7a5a3a; font-size:13px; }
+.catalog-notice { margin-bottom:12px; color:#354A3A; font-weight:600; }
+.catalog-notice:empty { display:none; }
+.catalog-card__add { display:block; width:100%; margin-top:9px; padding:10px; background:#B50500; color:white; border:1px solid #B50500; border-radius:8px; font:inherit; font-size:13px; font-weight:700; cursor:pointer; }
+.catalog-card__add:hover,.catalog-card__add:focus-visible { background:#9A1708; outline-offset:3px; }
+@media(max-width:768px) { .catalog-controls { grid-template-columns:1fr 1fr; } .catalog-control:first-child { grid-column:1 / -1; } }
+@media(max-width:480px) { .catalog-controls { grid-template-columns:1fr; } .catalog-control:first-child { grid-column:auto; } }

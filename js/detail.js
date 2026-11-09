@@ -93,8 +93,12 @@
     }
 
     try {
-      addToCart(combo.id);
-      showStatus(`${combo.name} đã được gửi đến chức năng giỏ hàng.`, "success");
+      const added = addToCart(combo.id);
+      if (added) {
+        showStatus(`Đã thêm ${combo.name} vào giỏ hàng. Nhấn biểu tượng giỏ hàng trên thanh điều hướng để xem.`, "success");
+      } else {
+        showStatus("Không thể thêm combo vào giỏ hàng. Vui lòng thử lại.", "error");
+      }
     } catch (error) {
       showStatus("Chưa thể thêm hộp quà vào giỏ. Vui lòng thử lại.", "error");
       console.error("Lỗi khi gọi addToCart:", error);

@@ -452,3 +452,46 @@ img {
 
 .footer-column > .footer-placeholder { font-size: inherit; color: inherit; }
 .footer-socials .footer-social-placeholder { display: inline-flex; align-items: center; justify-content: center; padding: 6px 0; }
+
+/* Dùng chung biểu tượng giỏ hàng cho mọi trang (Buổi 3) */
+
+.cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cart-link svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #B50500;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.cart-count[hidden] {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .cart-link svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+
+
