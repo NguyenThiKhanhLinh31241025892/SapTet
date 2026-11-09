@@ -1,0 +1,421 @@
+/* SẮP TẾT · Bước 5 - Giỏ hàng.
+ * Nạp SAU css/style.css. Phần 1 và 2 dùng chung cho mọi trang; phần 3 chỉ áp dụng cho cart.html.
+ * Nếu Linh muốn gom phần 1 và 2 vào style.css thì chuyển nguyên khối đó, không cần sửa gì khác. */
+
+/* ===== 1. Biểu tượng giỏ hàng trên thanh điều hướng ===== */
+.cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cart-link svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #B50500;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.cart-count[hidden] {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .cart-link svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+
+/* ===== 2. Nút "Thêm vào giỏ" và thông báo ===== */
+.btn-add-cart {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #B50500;
+  border-radius: 8px;
+  background: #B50500;
+  color: #FFFDF8;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-add-cart:hover,
+.btn-add-cart:focus-visible {
+  background: #9A1708;
+}
+
+.btn-add-cart:focus-visible {
+  outline: 2px solid #C8A15A;
+  outline-offset: 3px;
+}
+
+.cart-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 50;
+  max-width: min(420px, calc(100% - 32px));
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: var(--color-green, #354A3A);
+  color: #FFFDF8;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.cart-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ===== 3. Trang giỏ hàng (cart.html) ===== */
+.page-cart [hidden] {
+  display: none !important;
+}
+
+.cart-hero {
+  padding: 44px 0;
+  background: linear-gradient(115deg, #9A1708, #B50500);
+  color: #FFFDF8;
+}
+
+.cart-hero__inner,
+.cart-container {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.cart-eyebrow {
+  color: #FFDE59;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.cart-hero h1 {
+  margin: 10px 0 8px;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.25;
+}
+
+.cart-hero h1:focus {
+  outline: none;
+}
+
+.cart-container {
+  padding: 40px 0 70px;
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 28px;
+  align-items: start;
+}
+
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid #ead9cc;
+  border-radius: 15px;
+}
+
+.cart-item__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
+  overflow: hidden;
+  background: #FFFDF8;
+  border-radius: 10px;
+}
+
+.cart-item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cart-item__tag {
+  margin-bottom: 4px;
+  color: #B50500;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.cart-item__name {
+  margin-bottom: 6px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.cart-item__name a:hover,
+.cart-item__name a:focus-visible {
+  text-decoration: underline;
+}
+
+.cart-item__price {
+  color: #7a5a3a;
+  font-size: 13px;
+}
+
+.cart-item__actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.cart-qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #E6D9BF;
+  border-radius: 999px;
+  background: #FFFDF8;
+}
+
+.qty-btn {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #B50500;
+  font: inherit;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.qty-btn:hover:not(:disabled) {
+  background: #FBF3E2;
+}
+
+.qty-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.qty-value {
+  min-width: 32px;
+  text-align: center;
+  font-weight: 700;
+  color: #9A1708;
+}
+
+.cart-item__total {
+  display: flex;
+  flex-direction: column;
+  min-width: 112px;
+  text-align: right;
+}
+
+.cart-item__total-label {
+  color: #7a5a3a;
+  font-size: 11px;
+}
+
+.cart-item__total strong {
+  color: #B50500;
+  font-size: 16px;
+}
+
+.cart-item__remove {
+  min-height: 40px;
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  color: #7a5a3a;
+  font: inherit;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cart-item__remove:hover {
+  color: #B50500;
+}
+
+.qty-btn:focus-visible,
+.cart-item__remove:focus-visible,
+.cart-item__name a:focus-visible,
+.cart-btn:focus-visible {
+  outline: 2px solid #C8A15A;
+  outline-offset: 2px;
+}
+
+/* Tóm tắt giỏ hàng */
+.cart-summary {
+  position: sticky;
+  top: 20px;
+  padding: 24px;
+  background: #FBF3E2;
+  border: 1px solid #ead9cc;
+  border-radius: 16px;
+}
+
+.cart-summary h2 {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.cart-summary__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #E6D9BF;
+}
+
+.cart-summary__row--total {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.cart-summary__row--total dd {
+  color: #B50500;
+}
+
+.cart-summary .cart-btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Nút dùng trong trang giỏ hàng */
+.cart-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid #B50500;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cart-btn--primary {
+  background: #B50500;
+  color: #FFFDF8;
+}
+
+.cart-btn--primary:hover,
+.cart-btn--primary:focus-visible {
+  background: #9A1708;
+}
+
+.cart-btn--ghost {
+  background: transparent;
+  color: #B50500;
+}
+
+.cart-btn--ghost:hover,
+.cart-btn--ghost:focus-visible {
+  background: #B50500;
+  color: #FFFDF8;
+}
+
+/* Giỏ hàng trống */
+.cart-empty {
+  padding: 48px 24px;
+  text-align: center;
+  background: #FFFDF8;
+  border: 1px dashed #C8A15A;
+  border-radius: 12px;
+}
+
+.cart-empty h2 {
+  margin-bottom: 8px;
+  font-size: clamp(20px, 3vw, 28px);
+}
+
+.cart-empty p {
+  margin-bottom: 20px;
+  color: #7a5a3a;
+}
+
+/* Responsive: máy tính bảng và điện thoại */
+@media (max-width: 900px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .cart-hero {
+    padding: 34px 0;
+  }
+
+  .cart-item {
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .cart-item__image {
+    width: 84px;
+    height: 84px;
+  }
+
+  .cart-item__actions {
+    grid-column: 1 / -1;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .qty-btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cart-toast,
+  .cart-btn,
+  .btn-add-cart {
+    transition: none;
+  }
+}

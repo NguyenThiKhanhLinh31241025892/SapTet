@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng | Sắp Tết</title>
+  <meta name="description" content="Xem lại các hộp quà Tết bạn đã chọn tại Sắp Tết.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+<body class="page-cart">
+<header class="site-header">
+        <div class="header-container">
+
+            <!-- Logo -->
+            <a href="index.html" class="logo" aria-label="Sắp Tết - Trang chủ">
+                <img src="images/logo-sap-tet.png" alt="Sắp Tết">
+            </a>
+
+            <!-- Navigation -->
+            <nav class="main-nav" aria-label="Điều hướng chính">
+                <a href="index.html" class="nav-link">Trang chủ</a>
+                <a href="products.html" class="nav-link">Hộp quà Tết</a>
+                <a href="customize.html" class="nav-link">Tự thiết kế hộp quà</a>
+                <a href="about.html" class="nav-link">Về Sắp Tết</a>
+
+                <a href="cart.html" class="nav-link cart-link active" aria-current="page" aria-label="Giỏ hàng" data-cart-link>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <circle cx="8" cy="21" r="1"></circle>
+                        <circle cx="19" cy="21" r="1"></circle>
+                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                    </svg>
+                    <span class="cart-count" data-cart-count hidden>0</span>
+                </a>
+
+                <span class="login-link login-placeholder" title="Đăng nhập chưa được triển khai trong Buổi 2">
+                    <svg
+                        class="login-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path>
+                    </svg>
+
+                    <span class="login-text">Tài khoản (demo)</span>
+                </span>
+            </nav>
+        </div>
+    </header>
+<main>
+  <section class="cart-hero">
+    <div class="cart-hero__inner">
+      <p class="cart-eyebrow">Sắp Tết · Giỏ hàng</p>
+      <h1 id="cart-heading" tabindex="-1">Giỏ hàng của bạn</h1>
+      <p>Xem lại các món quà bạn đã chọn.</p>
+    </div>
+  </section>
+
+  <section class="cart-container" aria-label="Nội dung giỏ hàng">
+    <!-- Có sản phẩm: js/cart-page.js vẽ danh sách và tóm tắt vào đây -->
+    <div class="cart-layout" id="cart-layout" hidden>
+      <ul class="cart-list" id="cart-list" aria-label="Sản phẩm trong giỏ hàng"></ul>
+
+      <aside class="cart-summary" aria-labelledby="summary-heading">
+        <h2 id="summary-heading">Tóm tắt giỏ hàng</h2>
+        <dl aria-live="polite" aria-atomic="true">
+          <div class="cart-summary__row">
+            <dt>Tổng số lượng</dt>
+            <dd id="summary-count">0</dd>
+          </div>
+          <div class="cart-summary__row cart-summary__row--total">
+            <dt>Tổng tiền</dt>
+            <dd id="summary-total">0đ</dd>
+          </div>
+        </dl>
+        <a class="cart-btn cart-btn--ghost" href="products.html">Tiếp tục mua sắm</a>
+      </aside>
+    </div>
+
+    <!-- Giỏ trống -->
+    <div class="cart-empty" id="cart-empty" role="status">
+      <h2>Giỏ hàng của bạn đang trống</h2>
+      <p>Hãy chọn vài hộp quà Tết để bắt đầu nhé.</p>
+      <a class="cart-btn cart-btn--primary" href="products.html">Khám phá hộp quà →</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer" id="lien-he">
+  <div class="footer-main">
+
+    <!-- LEFT: BRAND -->
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo" aria-label="Sắp Tết - Trang chủ">
+        <img
+          src="images/sap-tet-logo-white.png"
+          alt="Sắp Tết"
+        >
+      </a>
+
+      <p class="footer-tagline">
+        Gói trọn yêu thương,<br>
+        trao gửi ngày xuân.
+      </p>
+
+      <p class="footer-description">
+        Mỗi món quà là một lời chúc,
+        mỗi lần trao tay là một khoảnh khắc
+        yêu thương được gìn giữ.
+      </p>
+    </div>
+
+    <!-- RIGHT: NAVIGATION + CONNECTION -->
+    <div class="footer-right">
+
+      <!-- DISCOVER + SUPPORT -->
+      <div class="footer-navigation">
+
+        <div class="footer-column">
+          <h3>Khám phá</h3>
+          <a href="index.html">Trang chủ</a>
+          <a href="products.html">Bộ sưu tập quà Tết</a>
+          <a href="customize.html">Tự thiết kế hộp quà</a>
+          <a href="about.html#story-title">Câu chuyện Sắp Tết</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Hỗ trợ</h3>
+          <span class="footer-placeholder" title="Nội dung đang hoàn thiện">Hướng dẫn đặt quà</span>
+          <span class="footer-placeholder" title="Nội dung đang hoàn thiện">Câu hỏi thường gặp</span>
+          <a href="#lien-he">Liên hệ</a>
+        </div>
+
+      </div>
+
+      <!-- CONNECT -->
+      <div class="footer-connect">
+        <h3>Kết nối với Sắp Tết</h3>
+
+        <p>
+          Cùng Sắp Tết trao gửi những món quà
+          xuân ý nghĩa.
+        </p>
+
+        <div class="footer-socials">
+          <span class="footer-social-placeholder" title="Đang cập nhật kênh Facebook">Facebook</span>
+          <span class="footer-social-placeholder" title="Đang cập nhật kênh Instagram">Instagram</span>
+          <span class="footer-social-placeholder" title="Đang cập nhật kênh Email">Email</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COPYRIGHT -->
+  <div class="footer-bottom">
+    <p>© 2026 Sắp Tết. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Thứ tự bắt buộc: dữ liệu -> logic giỏ hàng -> vẽ trang -->
+<script src="data/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/cart-page.js"></script>
+</body>
+</html>
