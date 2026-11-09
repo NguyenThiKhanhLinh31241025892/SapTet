@@ -9,7 +9,7 @@
 "use strict";
 
 (function () {
-  const CART_KEY = "sapTetCart";   // phải trùng khóa trong data-contract
+  const CART_KEY = window.SAP_TET_CART_KEY || "sapTetCart";  // phải trùng khóa trong data-contract
   const MAX_QUANTITY = 99;         // giới hạn số lượng mỗi dòng
   const CART_CHANGED_EVENT = "sapTetCartChanged";
 

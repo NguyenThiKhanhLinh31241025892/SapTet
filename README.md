@@ -14,7 +14,8 @@ SapTet/
 ├── about.html                 # Giới thiệu Sắp Tết
 ├── customize.html             # Mô phỏng tự phối hộp quà
 ├── css/
-│   ├── style.css              # CSS chung
+│   ├── style.css              # CSS chu
+ng
 │   ├── home.css
 │   ├── products.css
 │   ├── detail.css
