@@ -1,181 +1,174 @@
-// BƯỚC 5 - Logic giỏ hàng dùng chung (Yến Vy: feature/cart-functions).
-// Quy ước theo docs/data-contract.md:
-//   - Một dòng giỏ hàng: { id, quantity }  (quantity là số nguyên >= 1)
-//   - Khóa localStorage duy nhất: "sapTetCart"
-//   - Giá luôn lấy từ mảng `products` (data/products.js), KHÔNG lưu giá/tổng tiền trong giỏ
-//   - addToCart(productId): Quý gọi khi bấm "Thêm vào giỏ hàng"
-//   - saveCart(cart) / loadCart(): Phương Vy viết trong js/cart-storage.js; file này chỉ GỌI lại.
-//     Nếu cart-storage.js chưa được merge, file này tự dùng cùng khóa/cùng định dạng để vẫn chạy.
-// File này KHÔNG khai báo danh sách sản phẩm. Chỉ đọc mảng `products` có sẵn.
-// Thứ tự nạp: data/products.js -> (js/cart-storage.js) -> js/cart.js -> js/cart-page.js
-//
-// Toàn bộ code nằm trong IIFE để không trùng tên biến toàn cục với cart-storage.js / cart-page.js.
+// BƯỚC 5 - Logic giỏ hàng dùng chung của website Sắp Tết (Yến Vy).
+// Tuân theo docs/data-contract.md:
+//   - Một dòng giỏ hàng: { id, quantity } (id tham chiếu products, quantity là số nguyên >= 1).
+//   - Giá và tên LẤY TỪ mảng `products` (data/products.js), KHÔNG lưu giá/tổng tiền trong giỏ.
+//   - Khóa localStorage dùng chung: "sapTetCart".
+//   - saveCart(cart) / loadCart() do Phương Vy viết trong js/cart-storage.js; file này dùng lại nếu có.
+// File này KHÔNG khai báo danh sách sản phẩm nào khác.
+// Thứ tự nạp: data/products.js -> (js/cart-storage.js nếu có) -> js/cart.js -> js/cart-page.js
 "use strict";
 
 (function () {
-  var CART_KEY = "sapTetCart";
-  var CART_EVENT = "sapTetCartChanged";
-  var MAX_QUANTITY = 99;
+  const CART_KEY = "sapTetCart";   // phải trùng khóa trong data-contract
+  const MAX_QUANTITY = 99;         // giới hạn số lượng mỗi dòng
+  const CART_CHANGED_EVENT = "sapTetCartChanged";
 
-  // ---------- Đọc / ghi giỏ (ưu tiên hàm của Phương Vy) ----------
+  // ---------- 1. Đọc / ghi giỏ (ưu tiên hàm của Phương Vy) ----------
 
-  function readStoredCart() {
-    var raw;
-    if (typeof window.loadCart === "function") {
-      raw = window.loadCart();
-    } else {
-      try {
-        raw = JSON.parse(localStorage.getItem(CART_KEY));
-      } catch (error) {
-        raw = [];
-      }
-    }
-    return Array.isArray(raw) ? raw : [];
+  // Chuẩn hóa dữ liệu đọc ra: bỏ dòng hỏng, ép quantity về số nguyên 1..MAX.
+  function sanitizeCart(raw) {
+    if (!Array.isArray(raw)) return [];
+    const merged = new Map();
+    raw.forEach((line) => {
+      if (!line || typeof line.id !== "string") return;
+      const quantity = Math.floor(Number(line.quantity));
+      if (!Number.isFinite(quantity) || quantity < 1) return;
+      const current = merged.get(line.id) || 0;
+      merged.set(line.id, Math.min(current + quantity, MAX_QUANTITY));
+    });
+    return Array.from(merged, ([id, quantity]) => ({ id, quantity }));
   }
 
-  function writeStoredCart(cart) {
+  function readCart() {
+    // Dùng loadCart() của cart-storage.js nếu đã được nạp (một giỏ duy nhất).
+    if (typeof window.loadCart === "function") {
+      return sanitizeCart(window.loadCart());
+    }
+    // Dự phòng khi chưa có cart-storage.js: cùng khóa, cùng cấu trúc.
+    try {
+      return sanitizeCart(JSON.parse(localStorage.getItem(CART_KEY)));
+    } catch (error) {
+      console.warn("Không đọc được giỏ hàng, dùng giỏ trống:", error);
+      return [];
+    }
+  }
+
+  function writeCart(cart) {
     if (typeof window.saveCart === "function") {
       window.saveCart(cart);
-      return;
+    } else {
+      try {
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      } catch (error) {
+        console.error("Không lưu được giỏ hàng:", error);
+      }
     }
-    try {
-      localStorage.setItem(CART_KEY, JSON.stringify(cart));
-    } catch (error) {
-      console.error("Không thể lưu giỏ hàng vào localStorage:", error);
-    }
+    notifyCartChanged();
   }
 
-  // ---------- Dữ liệu sản phẩm ----------
+  // ---------- 2. Tra cứu sản phẩm (chỉ từ mảng products dùng chung) ----------
 
   function findProduct(productId) {
     if (typeof products === "undefined" || !Array.isArray(products)) return undefined;
-    return products.find(function (product) {
-      return product.id === productId;
-    });
+    return products.find((product) => product.id === productId);
   }
 
-  // Giỏ sạch: bỏ dòng sai cấu trúc, id không còn trong products, số lượng không hợp lệ; gộp dòng trùng id.
-  function getCart() {
-    var merged = [];
-    readStoredCart().forEach(function (line) {
-      if (!line || typeof line.id !== "string" || !findProduct(line.id)) return;
-      var quantity = Math.floor(Number(line.quantity));
-      if (!Number.isFinite(quantity) || quantity < 1) return;
+  // ---------- 3. Thao tác giỏ hàng ----------
 
-      var existing = merged.find(function (item) {
-        return item.id === line.id;
-      });
-      if (existing) {
-        existing.quantity = Math.min(existing.quantity + quantity, MAX_QUANTITY);
-      } else {
-        merged.push({ id: line.id, quantity: Math.min(quantity, MAX_QUANTITY) });
-      }
-    });
-    return merged;
-  }
-
-  // ---------- Thông báo cho giao diện ----------
-
-  function updateCartBadges() {
-    var count = window.getCartCount();
-    document.querySelectorAll("[data-cart-count]").forEach(function (badge) {
-      badge.textContent = count;
-      badge.hidden = count === 0;
-    });
-  }
-
-  function commit(cart) {
-    writeStoredCart(cart);
-    updateCartBadges();
-    document.dispatchEvent(new CustomEvent(CART_EVENT, { detail: { cart: cart } }));
-  }
-
-  // ---------- Thao tác giỏ hàng ----------
-
-  // Thêm 1 sản phẩm. Đã có trong giỏ -> tăng số lượng, không tạo dòng trùng.
-  window.addToCart = function (productId) {
+  // Thêm sản phẩm. Đã có trong giỏ thì tăng số lượng, không tạo dòng trùng.
+  function addToCart(productId) {
     if (!findProduct(productId)) {
-      console.warn("addToCart: không tìm thấy sản phẩm có id =", productId);
+      console.warn(`addToCart: không có sản phẩm "${productId}" trong data/products.js`);
       return false;
     }
-    var cart = getCart();
-    var line = cart.find(function (item) {
-      return item.id === productId;
-    });
+    const cart = readCart();
+    const line = cart.find((item) => item.id === productId);
     if (line) {
       line.quantity = Math.min(line.quantity + 1, MAX_QUANTITY);
     } else {
       cart.push({ id: productId, quantity: 1 });
     }
-    commit(cart);
+    writeCart(cart);
     return true;
-  };
+  }
 
-  window.increaseQuantity = function (productId) {
-    var cart = getCart();
-    var line = cart.find(function (item) {
-      return item.id === productId;
-    });
-    if (!line || line.quantity >= MAX_QUANTITY) return;
-    line.quantity += 1;
-    commit(cart);
-  };
+  function increaseQuantity(productId) {
+    const cart = readCart();
+    const line = cart.find((item) => item.id === productId);
+    if (!line) return false;
+    line.quantity = Math.min(line.quantity + 1, MAX_QUANTITY);
+    writeCart(cart);
+    return true;
+  }
 
-  // Giảm nhưng không xuống dưới 1; muốn bỏ sản phẩm thì dùng removeFromCart.
-  window.decreaseQuantity = function (productId) {
-    var cart = getCart();
-    var line = cart.find(function (item) {
-      return item.id === productId;
-    });
-    if (!line || line.quantity <= 1) return;
+  // Giảm 1 đơn vị, tối thiểu là 1 (muốn bỏ hẳn thì dùng removeFromCart).
+  function decreaseQuantity(productId) {
+    const cart = readCart();
+    const line = cart.find((item) => item.id === productId);
+    if (!line || line.quantity <= 1) return false;
     line.quantity -= 1;
-    commit(cart);
-  };
+    writeCart(cart);
+    return true;
+  }
 
-  window.removeFromCart = function (productId) {
-    var cart = getCart();
-    var next = cart.filter(function (item) {
-      return item.id !== productId;
+  function removeFromCart(productId) {
+    const cart = readCart();
+    const next = cart.filter((item) => item.id !== productId);
+    if (next.length === cart.length) return false;
+    writeCart(next);
+    return true;
+  }
+
+  // ---------- 4. Tính toán (luôn tính lại từ products + quantity) ----------
+
+  // Trả về [{ product, quantity, lineTotal }]; bỏ qua dòng có id không còn trong products.
+  function getCartItems() {
+    return readCart()
+      .map((line) => {
+        const product = findProduct(line.id);
+        if (!product) return null;
+        return {
+          product,
+          quantity: line.quantity,
+          lineTotal: product.price * line.quantity
+        };
+      })
+      .filter(Boolean);
+  }
+
+  function getCartCount() {
+    return getCartItems().reduce((sum, item) => sum + item.quantity, 0);
+  }
+
+  function getCartTotal() {
+    return getCartItems().reduce((sum, item) => sum + item.lineTotal, 0);
+  }
+
+  // ---------- 5. Đồng bộ biểu tượng giỏ hàng trên thanh điều hướng ----------
+
+  function updateCartBadge() {
+    const count = getCartCount();
+    document.querySelectorAll("[data-cart-count]").forEach((badge) => {
+      badge.textContent = count;
+      badge.hidden = count === 0;
     });
-    if (next.length === cart.length) return;
-    commit(next);
-  };
-
-  // ---------- Truy vấn (cart-page.js dùng để vẽ giao diện) ----------
-
-  // [{ product, quantity, lineTotal }] - thành tiền = đơn giá (từ products) x số lượng
-  window.getCartItems = function () {
-    return getCart().map(function (line) {
-      var product = findProduct(line.id);
-      return {
-        product: product,
-        quantity: line.quantity,
-        lineTotal: product.price * line.quantity
-      };
+    document.querySelectorAll("[data-cart-link]").forEach((link) => {
+      link.setAttribute("aria-label", count > 0 ? `Giỏ hàng, ${count} sản phẩm` : "Giỏ hàng");
     });
-  };
+  }
 
-  // Tổng số lượng (cộng quantity của mọi dòng, không phải số dòng)
-  window.getCartCount = function () {
-    return getCart().reduce(function (sum, line) {
-      return sum + line.quantity;
-    }, 0);
-  };
+  // Phát sự kiện để cart-page.js vẽ lại và cập nhật biểu tượng.
+  function notifyCartChanged() {
+    updateCartBadge();
+    document.dispatchEvent(new CustomEvent(CART_CHANGED_EVENT));
+  }
 
-  // Tổng tiền luôn được tính lại từ giá trong products
-  window.getCartTotal = function () {
-    return window.getCartItems().reduce(function (sum, item) {
-      return sum + item.lineTotal;
-    }, 0);
-  };
-
-  // ---------- Đồng bộ biểu tượng giỏ hàng ----------
-
-  document.addEventListener("DOMContentLoaded", updateCartBadges);
-  // Tab khác thay đổi giỏ -> cập nhật số lượng trên thanh điều hướng
-  window.addEventListener("storage", function (event) {
-    if (event.key === null || event.key === CART_KEY) updateCartBadges();
+  // ---------- 6. Công khai các hàm cho các trang khác dùng ----------
+  // (cart-page.js, detail.js... gọi trực tiếp theo tên)
+  Object.assign(window, {
+    addToCart,
+    increaseQuantity,
+    decreaseQuantity,
+    removeFromCart,
+    getCartItems,
+    getCartCount,
+    getCartTotal,
+    updateCartBadge
   });
-  // Quay lại trang bằng nút Back (bfcache) vẫn hiển thị số lượng đúng
-  window.addEventListener("pageshow", updateCartBadges);
+
+  // Cập nhật số trên biểu tượng khi mở trang và khi giỏ đổi ở tab khác.
+  document.addEventListener("DOMContentLoaded", updateCartBadge);
+  window.addEventListener("storage", (event) => {
+    if (event.key === null || event.key === CART_KEY) updateCartBadge();
+  });
 })();
